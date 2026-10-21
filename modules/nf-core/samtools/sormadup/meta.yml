@@ -1,0 +1,204 @@
+name: "samtools_sormadup"
+description: Collate/Fixmate/Sort/Markdup SAM/BAM/CRAM file
+keywords:
+  - cat
+  - collate
+  - fixmate
+  - sort
+  - markduplicates
+  - bam
+  - sam
+  - cram
+  - multi-tool
+tools:
+  - samtools_cat:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: http://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      args_id: "$args"
+      identifier: biotools:samtools
+  - samtools_collate:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: http://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      args_id: "$args2"
+      identifier: biotools:samtools
+  - samtools_fixmate:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: http://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      args_id: "$args3"
+      identifier: biotools:samtools
+  - samtools_sort:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: http://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      args_id: "$args4"
+      identifier: biotools:samtools
+  - samtools_markdup:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: http://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      args_id: "$args5"
+      identifier: biotools:samtools
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - input:
+        type: file
+        description: BAM/CRAM/SAM files
+        pattern: "*.{bam,cram,sam}"
+        ontologies: []
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing reference information
+          e.g. [ id:'genome' ]
+    - fasta:
+        type: file
+        description: Reference genome file
+        pattern: "*.{fasta,fa,fna}"
+        ontologies: []
+    - fai:
+        type: file
+        description: Reference genome index file
+        pattern: "*.fai"
+        ontologies: []
+output:
+  bam:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.bam":
+          type: file
+          description: Sorted and duplicate marked BAM file
+          pattern: "*.bam"
+          ontologies: []
+  cram:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.cram":
+          type: file
+          description: Sorted and duplicate marked CRAM file
+          pattern: "*.cram"
+          ontologies: []
+  csi:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.csi":
+          type: file
+          description: Sorted and duplicate marked BAM index file
+          pattern: "*.csi"
+          ontologies: []
+  crai:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.crai":
+          type: file
+          description: Sorted and duplicate marked CRAM index file
+          pattern: "*.crai"
+          ontologies: []
+  metrics:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.metrics":
+          type: file
+          description: Duplicate metrics file
+          pattern: "*.metrics"
+          ontologies: []
+  versions_samtools:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - samtools:
+          type: string
+          description: The tool name
+      - "samtools version | sed '1!d;s/.* //'":
+          type: eval
+          description: The command used to generate the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - samtools:
+          type: string
+          description: The tool name
+      - "samtools version | sed '1!d;s/.* //'":
+          type: eval
+          description: The command used to generate the version of the tool
+authors:
+  - "@matthdsm"
+maintainers:
+  - "@matthdsm"
+containers:
+  docker:
+    linux/arm64:
+      name: community.wave.seqera.io/library/htslib_samtools:1.24--4003425f22200067
+      build_id: bd-4003425f22200067_1
+      scan_id: sc-e4e98f3040c05cc1_1
+    linux/amd64:
+      name: community.wave.seqera.io/library/htslib_samtools:1.24--8a3ddf262165ba23
+      build_id: bd-8a3ddf262165ba23_1
+      scan_id: sc-d80d6dd51882efb8_1
+  singularity:
+    linux/amd64:
+      name: oras://community.wave.seqera.io/library/htslib_samtools:1.24--780d5da12d0c564c
+      build_id: bd-780d5da12d0c564c_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c2/c2f02ceb8cbe5aa37930dcbc0de6f1d07dfb292178c7e780c44ab2f556bf829f/data
+    linux/arm64:
+      name: oras://community.wave.seqera.io/library/htslib_samtools:1.24--b75d2385b98b4033
+      build_id: bd-b75d2385b98b4033_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/24/24bce03b37817d335921ac9bf9d9ca0d485d3b18926413f643b10e45ec1f5c6b/data
+  conda:
+    linux/amd64:
+      lock_file: modules/nf-core/samtools/sormadup/.conda-lock/linux_amd64-bd-8a3ddf262165ba23_1.txt
+    linux/arm64:
+      lock_file: modules/nf-core/samtools/sormadup/.conda-lock/linux_arm64-bd-4003425f22200067_1.txt

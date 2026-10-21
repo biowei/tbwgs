@@ -15,6 +15,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [FastQC](#fastqc) - Raw read QC, after lanes of the same sample are merged
 - [fastp](#fastp) - Adapter and quality trimming
 - [Kraken2](#kraken2) - Read classification, used to report the fraction of reads from the _M. tuberculosis_ complex (MTBC)
+- [Alignment](#alignment) - Reads mapped to H37Rv, sorted, with duplicates marked
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -56,6 +57,20 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 </details>
 
 [Kraken2](https://ccb.jhu.edu/software/kraken2/) classifies the trimmed reads against `--kraken2db`. The pipeline reads the MTBC line (taxid 77643) from each report and calculates the percentage of reads in the MTBC. This value is a contamination flag only. It does not remove samples.
+
+### Alignment
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `alignment/`
+  - `*.markdup.bam`: trimmed reads mapped to H37Rv with BWA-MEM, sorted by coordinate, with duplicates marked by `samtools markdup`. The read group ID and sample name are the sample ID.
+  - `*.markdup.bam.bai`: BAM index.
+  - `*.markdup.metrics`: `samtools markdup` statistics.
+
+</details>
+
+[BWA-MEM](https://github.com/lh3/bwa) maps the reads to the reference from `--mtb_tbdb` or `--mtb_reference`. [SAMtools](https://www.htslib.org/) then runs `collate`, `fixmate`, `sort` and `markdup` in one pipe. Duplicates are marked, not removed.
 
 ### MultiQC
 
