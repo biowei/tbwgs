@@ -54,7 +54,7 @@
                     "format": "path",
                     "exists": true,
                     "description": "Frozen tbdb archive (who_v2+ @ c4167762), as a .tar.gz or an extracted directory.",
-                    "help_text": "Build once with `tb-profiler update_tbdb --branch who_v2+ --commit c4167762ed361c679507e3f4ebe0cd277eae6102`, archive it and record its sha256. Required for every run; checked when the reference subworkflow is added.",
+                    "help_text": "Build once with `tb-profiler update_tbdb --branch who_v2+ --commit c4167762ed361c679507e3f4ebe0cd277eae6102`, archive it and record its sha256. The pipeline takes `genome.fasta` and `mask.bed` from it unless `--mtb_reference` and `--mtb_mask_bed` are both given. It becomes required when drug resistance profiling is added.",
                     "fa_icon": "fas fa-database"
                 },
                 "mtb_tbdb_name": {
@@ -86,7 +86,8 @@
                     "description": "Kraken2 database, as a directory or .tar.gz. Used to estimate the fraction of MTBC reads.",
                     "fa_icon": "fas fa-database"
                 }
-            }
+            },
+            "required": ["kraken2db"]
         },
         "qc_options": {
             "title": "QC thresholds",
@@ -281,7 +282,7 @@
                     "type": "string",
                     "fa_icon": "far fa-check-circle",
                     "description": "Base URL or local path to location of pipeline test dataset files",
-                    "default": "https://raw.githubusercontent.com/nf-core/test-datasets/",
+                    "default": "https://raw.githubusercontent.com/biowei/tbwgs-test-datasets/main/",
                     "hidden": true
                 },
                 "trace_report_suffix": {

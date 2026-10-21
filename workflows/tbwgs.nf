@@ -3,8 +3,9 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { FASTQC                 } from '../modules/nf-core/fastqc/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
+include { PREPROCESS_READS       } from '../subworkflows/local/preprocess_reads'
+include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_reference'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -30,10 +31,15 @@ workflow TBWGS {
     def ch_versions = channel.empty()
     def ch_multiqc_files = channel.empty()
     //
-    // MODULE: Run FastQC
+    // SUBWORKFLOW: P - merge lanes, read QC, trimming and MTBC fraction
     //
-    FASTQC(ch_samplesheet)
-    ch_multiqc_files = ch_multiqc_files.mix(FASTQC.out.zip.map{ _meta, file -> file })
+    PREPROCESS_READS(ch_samplesheet, params.kraken2db)
+    ch_multiqc_files = ch_multiqc_files.mix(PREPROCESS_READS.out.multiqc_files)
+
+    //
+    // SUBWORKFLOW: M0 - frozen reference, BWA index, mask and tbdb
+    //
+    PREPARE_MTB_REFERENCE(params.mtb_tbdb, params.mtb_reference, params.mtb_mask_bed)
 
     //
     // Collate and save software versions

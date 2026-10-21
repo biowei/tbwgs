@@ -45,12 +45,29 @@ TB003,TB003_S3_L001_R1_001.fastq.gz,TB003_S3_L001_R2_001.fastq.gz
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
+## Reference and databases
+
+The pipeline uses one frozen reference for the whole run.
+
+- `--mtb_tbdb`: the frozen tbdb (who_v2+ at commit `c4167762`), as a `.tar.gz` or a directory. The pipeline takes the H37Rv reference `genome.fasta` and the mask `mask.bed` from it.
+- `--mtb_reference` and `--mtb_mask_bed`: use these to give the reference FASTA and the mask BED directly. If both are given, `--mtb_tbdb` is not needed yet. It becomes required when drug resistance profiling is added.
+- `--kraken2db`: a Kraken2 database, as a `.tar.gz` or a directory. It is required. The pipeline reports the percentage of reads classified as _M. tuberculosis_ complex (taxid 77643), so the database must contain that taxon.
+
+```bash
+nextflow run biowei/tbwgs \
+    --input samplesheet.csv \
+    --outdir results \
+    --mtb_tbdb tbdb_who_v2plus_c4167762.tar.gz \
+    --kraken2db k2_standard.tar.gz \
+    -profile docker
+```
+
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run biowei/tbwgs --input ./samplesheet.csv --outdir ./results  -profile docker
+nextflow run biowei/tbwgs --input ./samplesheet.csv --outdir ./results --mtb_tbdb <TBDB> --kraken2db <KRAKEN2DB> -profile docker
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.

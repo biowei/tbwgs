@@ -12,7 +12,9 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-- [FastQC](#fastqc) - Raw read QC
+- [FastQC](#fastqc) - Raw read QC, after lanes of the same sample are merged
+- [fastp](#fastp) - Adapter and quality trimming
+- [Kraken2](#kraken2) - Read classification, used to report the fraction of reads from the _M. tuberculosis_ complex (MTBC)
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -28,6 +30,32 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 </details>
 
 [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) gives general quality metrics about your sequenced reads. It provides information about the quality score distribution across your reads, per base sequence content (%A/T/G/C), adapter contamination and overrepresented sequences. For further reading and documentation see the [FastQC help pages](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/).
+
+### fastp
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `fastp/`
+  - `*.fastp.html`: fastp report for each sample.
+  - `*.fastp.json`: fastp statistics, also read by MultiQC.
+  - `*.fastp.log`: fastp log.
+
+</details>
+
+[fastp](https://github.com/OpenGene/fastp) trims adapters and low-quality bases. Only the trimmed reads go to the downstream steps. The trimmed FASTQ files are not saved.
+
+### Kraken2
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `kraken2/`
+  - `*.kraken2.report.txt`: Kraken2 report for the trimmed reads of each sample.
+
+</details>
+
+[Kraken2](https://ccb.jhu.edu/software/kraken2/) classifies the trimmed reads against `--kraken2db`. The pipeline reads the MTBC line (taxid 77643) from each report and calculates the percentage of reads in the MTBC. This value is a contamination flag only. It does not remove samples.
 
 ### MultiQC
 
