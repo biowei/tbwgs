@@ -20,26 +20,21 @@ The `sample` identifiers have to be the same when you have re-sequenced the same
 
 ```csv title="samplesheet.csv"
 sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz
+TB001,TB001_S1_L002_R1_001.fastq.gz,TB001_S1_L002_R2_001.fastq.gz
+TB001,TB001_S1_L003_R1_001.fastq.gz,TB001_S1_L003_R2_001.fastq.gz
+TB001,TB001_S1_L004_R1_001.fastq.gz,TB001_S1_L004_R2_001.fastq.gz
 ```
 
 ### Full samplesheet
 
-The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 3 columns to match those defined in the table below.
-
-A final samplesheet file consisting of both single- and paired-end data may look something like the one below. This is for 6 samples, where `TREATMENT_REP3` has been sequenced twice.
+The pipeline accepts paired-end Illumina reads only. Each row needs `sample`, `fastq_1` and `fastq_2`. One sample is one isolate. Rows with the same `sample` are merged before read QC.
 
 ```csv title="samplesheet.csv"
 sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz
-CONTROL_REP3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz
-TREATMENT_REP1,AEG588A4_S4_L003_R1_001.fastq.gz,
-TREATMENT_REP2,AEG588A5_S5_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
+TB001,TB001_S1_L001_R1_001.fastq.gz,TB001_S1_L001_R2_001.fastq.gz
+TB001,TB001_S1_L002_R1_001.fastq.gz,TB001_S1_L002_R2_001.fastq.gz
+TB002,TB002_S2_L001_R1_001.fastq.gz,TB002_S2_L001_R2_001.fastq.gz
+TB003,TB003_S3_L001_R1_001.fastq.gz,TB003_S3_L001_R2_001.fastq.gz
 ```
 
 | Column    | Description                                                                                                                                                                            |
