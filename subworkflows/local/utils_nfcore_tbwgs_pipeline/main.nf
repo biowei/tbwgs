@@ -83,6 +83,11 @@ workflow PIPELINE_INITIALISATION {
     )
 
     //
+    // Check that a reference FASTA and mask BED can be found
+    //
+    validateReferenceParameters(params.mtb_tbdb, params.mtb_reference, params.mtb_mask_bed)
+
+    //
     // Create channel from input file provided through params.input
     //
 
@@ -163,6 +168,15 @@ workflow PIPELINE_COMPLETION {
 */
 
 //
+// The reference FASTA and mask BED come from --mtb_tbdb unless both are given directly
+//
+def validateReferenceParameters(tbdb, reference, mask) {
+    if (!tbdb && !(reference && mask)) {
+        error("Please provide --mtb_tbdb, or both --mtb_reference and --mtb_mask_bed.")
+    }
+}
+
+//
 // Validate channels from input samplesheet
 //
 def validateInputSamplesheet(input) {
@@ -186,6 +200,10 @@ def toolCitationText() {
     def citation_text = [
             "Tools used in the workflow included:",
             "FastQC (Andrews 2010),",
+            "fastp (Chen et al. 2018),",
+            "Kraken2 (Wood et al. 2019),",
+            "BWA (Li and Durbin 2009),",
+            "SAMtools (Danecek et al. 2021),",
             "MultiQC (Ewels et al. 2016)",
             "."
         ].join(' ').trim()
@@ -199,6 +217,10 @@ def toolBibliographyText() {
     // Uncomment function in methodsDescriptionText to render in MultiQC report
     def reference_text = [
             "<li>Andrews S, (2010) FastQC, URL: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).</li>",
+            "<li>Chen S, Zhou Y, Chen Y, Gu J. (2018). fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics, 34(17), i884–i890. doi: 10.1093/bioinformatics/bty560</li>",
+            "<li>Wood DE, Lu J, Langmead B. (2019). Improved metagenomic analysis with Kraken 2. Genome Biology, 20(1), 257. doi: 10.1186/s13059-019-1891-0</li>",
+            "<li>Li H, Durbin R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics, 25(14), 1754–1760. doi: 10.1093/bioinformatics/btp324</li>",
+            "<li>Danecek P, et al. (2021). Twelve years of SAMtools and BCFtools. GigaScience, 10(2), giab008. doi: 10.1093/gigascience/giab008</li>",
             "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>"
         ].join(' ').trim()
 

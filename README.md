@@ -23,7 +23,13 @@
 
 <!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
      workflows use the "tube map" design for that. See https://nf-co.re/docs/community/brand/workflow-schematics#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+
+1. Merge lanes of the same sample ([`cat`](http://www.linfo.org/cat.html))
+2. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
+3. Adapter and quality trimming ([`fastp`](https://github.com/OpenGene/fastp))
+4. Fraction of _M. tuberculosis_ complex reads ([`Kraken2`](https://ccb.jhu.edu/software/kraken2/))
+5. Prepare the H37Rv reference and BWA index from the frozen tbdb ([`SAMtools`](https://www.htslib.org/), [`BWA`](https://github.com/lh3/bwa))
+6. Present QC ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
@@ -48,12 +54,12 @@ Each row represents a fastq file (single-end) or a pair of fastq files (paired e
 
 Now, you can run the pipeline using:
 
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
-
 ```bash
 nextflow run biowei/tbwgs \
    -profile <docker/singularity/.../institute> \
    --input samplesheet.csv \
+   --mtb_tbdb <TBDB_ARCHIVE> \
+   --kraken2db <KRAKEN2DB> \
    --outdir <OUTDIR>
 ```
 
