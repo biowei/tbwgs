@@ -43,8 +43,8 @@ workflow PREPARE_MTB_REFERENCE {
 
     emit:
     fasta = ch_fasta                        // channel: [ val(meta), path(fasta) ]
-    fai   = SAMTOOLS_FAIDX.out.fai.first()  // channel: [ val(meta), path(fai) ]
-    index = BWA_INDEX.out.index.first()     // channel: [ val(meta), path(bwa) ]
+    fai   = SAMTOOLS_FAIDX.out.fai          // channel: [ val(meta), path(fai) ]
+    index = BWA_INDEX.out.index             // channel: [ val(meta), path(bwa) ]
     mask  = ch_mask                         // channel: path(bed)
     tbdb  = ch_tbdb                         // channel: path(tbdb_dir)
 }
