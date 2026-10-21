@@ -1,0 +1,49 @@
+repository_type: pipeline
+
+nf_core_version: 4.1.0
+
+lint:
+  files_unchanged:
+    - docs/CONTRIBUTING.md
+    - .prettierignore
+    - CODE_OF_CONDUCT.md
+    - assets/nf-core-tbwgs_logo_light.png
+    - docs/images/nf-core-tbwgs_logo_light.png
+    - docs/images/nf-core-tbwgs_logo_dark.png
+    - .github/ISSUE_TEMPLATE/bug_report.yml
+    - .github/PULL_REQUEST_TEMPLATE.md
+    - assets/email_template.txt
+    - docs/README.md
+  nextflow_config:
+    - manifest.name
+    - manifest.homePage
+  multiqc_config:
+    - report_comment
+  files_exist:
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+    - CODE_OF_CONDUCT.md
+    - assets/nf-core-tbwgs_logo_light.png
+    - docs/images/nf-core-tbwgs_logo_light.png
+    - docs/images/nf-core-tbwgs_logo_dark.png
+    - .github/ISSUE_TEMPLATE/config.yml
+    - .github/workflows/awstest.yml
+    - .github/workflows/awsfulltest.yml
+
+template:
+  org: biowei
+  name: tbwgs
+  description: Mycobacterium tuberculosis WGS for public health - read QC, H37Rv mapping,
+    variant calling, TB-Profiler drug resistance and SNP clustering
+  author: Chris
+  version: 0.1.0dev
+  force: true
+  outdir: /tmp/claude-0/-home-user-bacass/513af08a-ee75-53cc-8bd0-20fe5e7258d6/scratchpad/tbwgs
+  skip_features:
+    - igenomes
+    - gitpod
+    - codespaces
+    - adaptivecard
+    - slackreport
+    - rocrate
+  is_nfcore: false
