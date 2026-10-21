@@ -11,6 +11,7 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 
 - MTB parameter groups in `nextflow_schema.json`: reference and database, QC thresholds, SNP clustering.
 - Paired-end only samplesheet schema (`sample`, `fastq_1`, `fastq_2`).
+- Paired-end test samplesheet `assets/samplesheet_test.csv` for the `test` profile.
 
 ### `Fixed`
 
