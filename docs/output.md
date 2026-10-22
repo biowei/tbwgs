@@ -20,6 +20,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Variants](#variants) - Haploid variant calls against H37Rv
 - [Consensus](#consensus) - Masked consensus sequence per sample
 - [TB-Profiler](#tb-profiler) - Drug resistance and lineage
+- [SNP clustering](#snp-clustering) - Pairwise SNP distances and transmission clusters
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -133,6 +134,19 @@ A haploid caller reports one allele per site, so mixed infections and heteroresi
 [TB-Profiler](https://github.com/jodyphelan/TBProfiler) 6.7.0 runs on the trimmed reads of every sample, in parallel with mapping and variant calling, so it does not wait for the coverage QC flag. It uses its own mapping and variant calling (bwa, freebayes) against the reference in `--mtb_tbdb`, with `--no_trim` because fastp has already trimmed the reads.
 
 TB-Profiler reports a drug as susceptible when it finds no resistance mutation, even if the gene is barely covered. Use the per-gene depth in the JSON before reading a "susceptible" call: the per-sample summary table (still to be added) will mark such drugs as not interpretable.
+
+### SNP clustering
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `clustering/`
+  - `snp.tsv`: pairwise SNP distance matrix from snp-dists. It includes a `_reference_H37Rv` row and column, the distance of each sample to H37Rv.
+  - `snp.clusters.tsv`: one row per sample and one `cluster_<t>snp` column per threshold in `--mtb_snp_thresholds`. Samples in the same cluster share an ID such as `T5-1`; a sample with no other sample within the threshold gets `-`.
+
+</details>
+
+Only samples with coverage QC `PASS` are clustered, together with any consensus sequences in `--mtb_historical_consensus` (file name without extension is the sample ID). All consensus sequences are on H37Rv coordinates, so they are joined into one alignment with H37Rv itself, [snp-sites](https://github.com/sanger-pathogens/snp-sites) keeps the variable columns, and [snp-dists](https://github.com/tseemann/snp-dists) counts differences between A, C, G and T only, so a masked site (N) in either sample is not counted. Clusters are single-linkage: two samples are in the same cluster when they are linked by a chain of pairs each within the threshold (5 and 12 SNPs by default). The step is skipped with `--mtb_skip_clustering`, or when fewer than two samples are available.
 
 ### MultiQC
 

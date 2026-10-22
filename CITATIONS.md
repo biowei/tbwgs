@@ -38,6 +38,14 @@
 
 > Danecek P, Bonfield JK, Liddle J, Marshall J, Ohan V, Pollard MO, Whitwham A, Keane T, McCarthy SA, Davies RM, Li H. Twelve years of SAMtools and BCFtools. Gigascience. 2021 Feb 16;10(2):giab008. doi: 10.1093/gigascience/giab008. PubMed PMID: 33590861; PubMed Central PMCID: PMC7931819.
 
+- [snp-dists](https://github.com/tseemann/snp-dists)
+
+> Seemann T. snp-dists: pairwise SNP distance matrix from a FASTA sequence alignment. Software, https://github.com/tseemann/snp-dists.
+
+- [SNP-sites](https://pubmed.ncbi.nlm.nih.gov/28348851/)
+
+> Page AJ, Taylor B, Delaney AJ, Soares J, Seemann T, Keane JA, Harris SR. SNP-sites: rapid efficient extraction of SNPs from multi-FASTA alignments. Microb Genom. 2016 Apr 29;2(4):e000056. doi: 10.1099/mgen.0.000056. PubMed PMID: 28348851; PubMed Central PMCID: PMC5320690.
+
 - [TB-Profiler](https://github.com/jodyphelan/TBProfiler) and its database [tbdb](https://github.com/jodyphelan/tbdb)
 
 > TB-Profiler 6.7.0 profiles drug resistance and lineage; the H37Rv reference (`genome.fasta`) and mask (`mask.bed`) are taken from tbdb. Phelan JE, O'Sullivan DM, Machado D, Ramos J, Oppong YEA, Campino S, O'Grady J, McNerney R, Hibberd ML, Viveiros M, Huggett JF, Clark TG. Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Med. 2019 Jun 24;11(1):41. doi: 10.1186/s13073-019-0650-x. PubMed PMID: 31234910; PubMed Central PMCID: PMC6591855.

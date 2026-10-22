@@ -33,7 +33,8 @@
 7. Coverage QC flag per sample, without dropping samples ([`mosdepth`](https://github.com/brentp/mosdepth), [`SAMtools`](https://www.htslib.org/))
 8. Haploid variant calls and masked consensus sequence ([`BCFtools`](https://samtools.github.io/bcftools/))
 9. Drug resistance and lineage from the trimmed reads ([`TB-Profiler`](https://github.com/jodyphelan/TBProfiler))
-10. Present QC ([`MultiQC`](http://multiqc.info/))
+10. Pairwise SNP distances and single-linkage clusters of `PASS` samples and historical consensus sequences ([`snp-sites`](https://github.com/sanger-pathogens/snp-sites), [`snp-dists`](https://github.com/tseemann/snp-dists))
+11. Present QC ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
