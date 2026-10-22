@@ -1,0 +1,52 @@
+sample	stratum	cryptic_lineage	cryptic_vcf_depth	cryptic_vcf_low_frs_sites	pair_id	cryptic_snp_distance	expected
+ERR4797534	pan_susceptible	lineage1	55.4	23			QC pass; compare drug calls with truth
+ERR4830050	pan_susceptible	lineage2.2.1	64.7	65			QC pass; compare drug calls with truth
+ERR2510359	pan_susceptible	lineage3	44.1	58			QC pass; compare drug calls with truth
+ERR4814117	pan_susceptible	lineage4.1.2.1	72.5	51			QC pass; compare drug calls with truth
+ERR4828168	pan_susceptible	lineage1.1.1	48.9	77			QC pass; compare drug calls with truth
+ERR8699104	pan_susceptible	lineage2.2.1.1	82.8	16			QC pass; compare drug calls with truth
+ERR4796994	pan_susceptible	lineage3	58.5	80			QC pass; compare drug calls with truth
+ERR4811765	pan_susceptible	lineage4.3.2	70.6	9			QC pass; compare drug calls with truth
+ERR4797645	INH_mono	lineage1	76.6	36			QC pass; compare drug calls with truth
+ERR4828205	INH_mono	lineage2.2.1.1	42.3	21			QC pass; compare drug calls with truth
+ERR2510447	INH_mono	lineage3	57.9	71			QC pass; compare drug calls with truth
+ERR4813777	INH_mono	lineage4	77.0	5			QC pass; compare drug calls with truth
+ERR5918131	INH_mono	lineage2.2.1.1	76.6	15			QC pass; compare drug calls with truth
+ERR4796695	RIF_R_INH_S	lineage1.1.2	75.9	62			QC pass; compare drug calls with truth
+ERR3287417	RIF_R_INH_S	lineage2.2.1	83.2	13			QC pass; compare drug calls with truth
+ERR4809338	RIF_R_INH_S	lineage3	71.6	20			QC pass; compare drug calls with truth
+ERR4811037	RIF_R_INH_S	lineage4.5	161.3	12			QC pass; compare drug calls with truth
+ERR4809016	MDR_FQ_S	lineage1	70.2	27			QC pass; compare drug calls with truth
+ERR4831883	MDR_FQ_S	lineage2.2.1.1	54.9	71			QC pass; compare drug calls with truth
+ERR4829143	MDR_FQ_S	lineage3.1	102.8	48			QC pass; compare drug calls with truth
+ERR3287321	MDR_FQ_S	lineage4.3.3	70.6	3			QC pass; compare drug calls with truth
+ERR4797043	MDR_FQ_S	lineage1.1.2	40.8	68			QC pass; compare drug calls with truth
+ERR4811532	MDR_FQ_S	lineage2.2.1.1	225.2	19			QC pass; compare drug calls with truth
+ERR4830808	MDR_FQ_R	lineage1.1.2	45.5	73			QC pass; compare drug calls with truth
+ERR4797607	MDR_FQ_R	lineage2.2.1	66.3	41			QC pass; compare drug calls with truth
+ERR4797178	MDR_FQ_R	lineage3	45.8	59			QC pass; compare drug calls with truth
+ERR4813879	MDR_FQ_R	lineage4.1.2.1	67.0	84			QC pass; compare drug calls with truth
+ERR4830637	MDR_FQ_R	lineage2.2.1	109.2	37			QC pass; compare drug calls with truth
+ERR2510311	MDR_FQ_R	lineage3	61.4	73			QC pass; compare drug calls with truth
+ERR8975947	BDQ_R	lineage1	142.7	35			QC pass; compare drug calls with truth
+ERR4796724	BDQ_R	lineage2.2.1	41.3	62			QC pass; compare drug calls with truth
+ERR4810510	BDQ_R	lineage3	288.0	20			QC pass; compare drug calls with truth
+ERR4830205	LZD_R	lineage1.1.3	101.5	34			QC pass; compare drug calls with truth
+ERR4831404	LZD_R	lineage2.2.1	114.3	51			QC pass; compare drug calls with truth
+ERR2510873	LZD_R	lineage4.9	50.2	28			QC pass; compare drug calls with truth
+ERR4796484	AMI_R	lineage1	59.3	30			QC pass; compare drug calls with truth
+ERR4809077	AMI_R	lineage2.2.2	61.7	11			QC pass; compare drug calls with truth
+ERR4830566	pair_le5	lineage2.2.2	72.7	12	pair_le5_1	0	same cluster_5snp as its pair (same patient, CRyPTIC distance <= 2)
+ERR4830565	pair_le5	lineage2.2.2	123.3	32	pair_le5_1	0	same cluster_5snp as its pair (same patient, CRyPTIC distance <= 2)
+ERR4831831	pair_le5	lineage2.2.1.1	44.3	106	pair_le5_2	1	same cluster_5snp as its pair (same patient, CRyPTIC distance <= 2)
+ERR4831870	pair_le5	lineage2.2.1.1	44.4	93	pair_le5_2	1	same cluster_5snp as its pair (same patient, CRyPTIC distance <= 2)
+ERR4831713	pair_6to12	lineage2.2.1.1	85.5	84	pair_6to12_1	11	same cluster_12snp as its pair; cluster_5snp may differ (CRyPTIC distance 11)
+ERR4831863	pair_6to12	lineage2.2.1.1	44.9	140	pair_6to12_1	11	same cluster_12snp as its pair; cluster_5snp may differ (CRyPTIC distance 11)
+ERR4830557	pair_gt100	lineage4.3.3	63.2	16	pair_gt100_1	1121	not clustered with its pair (same patient, different lineage)
+ERR4830567	pair_gt100	lineage2.2.2	49.8	30	pair_gt100_1	1121	not clustered with its pair (same patient, different lineage)
+ERR2510541	low_coverage	lineage3	10.0	60			coverage_qc fail (mean depth below 20x); calls in low-depth genes uninterpretable
+ERR2510395	low_coverage	lineage3	14.0	65			coverage_qc fail (mean depth below 20x); calls in low-depth genes uninterpretable
+ERR4797089	suspected_mixed	lineage4	88.2	1933			mixed_lineage flagged (two lineages at intermediate read fractions in the CRyPTIC VCF)
+ERR4830345	suspected_mixed		89.6	1674			mixed_lineage flagged (two lineages at intermediate read fractions in the CRyPTIC VCF)
+ERR4811536	overlap_rpoB_H445L						rifampicin resistant (rpoB p.His445Leu) vs phenotype S at MIC 0.5: known discordance
+ERR4831755	overlap_low_mtbc	lineage2.2.1	23.9	246			mtbc_flag set (MTBC fraction about 75% in the first run); calls as in the first run
