@@ -37,7 +37,7 @@ template:
   description: Mycobacterium tuberculosis WGS for public health - read QC, H37Rv mapping,
     variant calling, TB-Profiler drug resistance and SNP clustering
   author: Chris
-  version: 1.0.0
+  version: 1.1.0dev
   force: true
   outdir: /tmp/claude-0/-home-user-bacass/513af08a-ee75-53cc-8bd0-20fe5e7258d6/scratchpad/tbwgs
   skip_features:
