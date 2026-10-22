@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
+- Sample set for a formal validation run: 51 CRyPTIC isolates with samplesheets, a phenotype truth table and expected QC and cluster results ([docs/validation/formal_validation_set.md](docs/validation/formal_validation_set.md)).
+
 ### `Fixed`
 
 ### `Dependencies`

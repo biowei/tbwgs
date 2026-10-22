@@ -83,6 +83,7 @@ The tbdb archive sha256 is `28da4bcd3f0af7f7db6bce62885b50c441289e4240c5d43f008d
   - The full method, data and scripts are in [docs/validation/tbtamr_comparison.md](docs/validation/tbtamr_comparison.md).
 
 - 8 isolates are not enough for a formal laboratory validation. Before you use the pipeline for reporting, validate it in your laboratory: use more samples with phenotypes, include local samples, run it on your own compute and write a validation report.
+- A sample set of 51 CRyPTIC isolates for a formal validation run is in [docs/validation/formal_validation_set.md](docs/validation/formal_validation_set.md). It has samplesheets, a phenotype truth table and expected QC and cluster results. It has not been run yet.
 
 ![tbwgs vs tbtamr on 8 CRyPTIC isolates](docs/validation/tbtamr_comparison/tbwgs_vs_tbtamr.png)
 
