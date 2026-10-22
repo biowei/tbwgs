@@ -3,8 +3,15 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { FASTQC                 } from '../modules/nf-core/fastqc/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
+include { PREPROCESS_READS       } from '../subworkflows/local/preprocess_reads'
+include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_reference'
+include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37rv'
+include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_coverage'
+include { CALL_MTB_VARIANTS      } from '../subworkflows/local/call_mtb_variants'
+include { PROFILE_DRUG_RESISTANCE } from '../subworkflows/local/profile_drug_resistance'
+include { CLUSTER_BY_SNP_DISTANCE } from '../subworkflows/local/cluster_by_snp_distance'
+include { SUMMARISE_MTB_RESULTS  } from '../subworkflows/local/summarise_mtb_results'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -30,10 +37,86 @@ workflow TBWGS {
     def ch_versions = channel.empty()
     def ch_multiqc_files = channel.empty()
     //
-    // MODULE: Run FastQC
+    // SUBWORKFLOW: P - merge lanes, read QC, trimming and MTBC fraction
     //
-    FASTQC(ch_samplesheet)
-    ch_multiqc_files = ch_multiqc_files.mix(FASTQC.out.zip.map{ _meta, file -> file })
+    PREPROCESS_READS(ch_samplesheet, params.kraken2db)
+    ch_multiqc_files = ch_multiqc_files.mix(PREPROCESS_READS.out.multiqc_files)
+
+    //
+    // SUBWORKFLOW: M0 - frozen reference, BWA index, mask and tbdb
+    //
+    PREPARE_MTB_REFERENCE(params.mtb_tbdb, params.mtb_reference, params.mtb_mask_bed)
+
+    //
+    // SUBWORKFLOW: M1 - map to H37Rv, mark duplicates and index
+    //
+    MAP_READS_TO_H37RV(
+        PREPROCESS_READS.out.reads,
+        PREPARE_MTB_REFERENCE.out.index,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai
+    )
+
+    //
+    // SUBWORKFLOW: M2 - coverage gate; flags samples PASS / FAIL in meta, drops none
+    //
+    CHECK_MAPPING_COVERAGE(
+        MAP_READS_TO_H37RV.out.bam,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai,
+        params.mtb_min_mean_depth,
+        params.mtb_min_breadth,
+        params.mtb_min_site_depth
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(CHECK_MAPPING_COVERAGE.out.multiqc_files)
+
+    //
+    // SUBWORKFLOW: M3 - haploid variant calls and masked consensus, for every sample
+    //
+    CALL_MTB_VARIANTS(
+        CHECK_MAPPING_COVERAGE.out.bam,
+        CHECK_MAPPING_COVERAGE.out.quantized_bed,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai,
+        PREPARE_MTB_REFERENCE.out.mask
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(CALL_MTB_VARIANTS.out.multiqc_files)
+
+    // Percent N in each consensus, for the clustering filter and the summary
+    def ch_consensus = CALL_MTB_VARIANTS.out.consensus
+        .map { meta, fa -> [ meta + [ mtb_consensus_n: consensusNPercent(fa) ], fa ] }
+
+    //
+    // SUBWORKFLOW: M4 - TB-Profiler drug resistance and lineage, in parallel with M1-M3
+    //
+    PROFILE_DRUG_RESISTANCE(PREPROCESS_READS.out.reads, PREPARE_MTB_REFERENCE.out.tbdb)
+
+    //
+    // SUBWORKFLOW: M5 - SNP distances and clusters for PASS samples plus historical consensus sequences
+    //
+    def ch_clusters = channel.empty()
+    if (!params.mtb_skip_clustering) {
+        CLUSTER_BY_SNP_DISTANCE(
+            ch_consensus,
+            PREPARE_MTB_REFERENCE.out.fasta,
+            params.mtb_historical_consensus,
+            params.mtb_max_consensus_n
+        )
+        ch_clusters = CLUSTER_BY_SNP_DISTANCE.out.clusters
+    }
+
+    //
+    // SUBWORKFLOW: M6 - one row per sample, FAIL samples and samples without results included
+    //
+    SUMMARISE_MTB_RESULTS(
+        PREPROCESS_READS.out.mtbc_fraction,
+        CHECK_MAPPING_COVERAGE.out.bam,
+        ch_consensus.map { meta, _fa -> [ meta, meta.mtb_consensus_n ] },
+        PROFILE_DRUG_RESISTANCE.out.json,
+        ch_clusters,
+        PREPARE_MTB_REFERENCE.out.tbdb
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(SUMMARISE_MTB_RESULTS.out.multiqc_files)
 
     //
     // Collate and save software versions
@@ -99,3 +182,18 @@ workflow TBWGS {
     THE END
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+
+//
+// Percent of N (or n) in a consensus FASTA, sequence lines only
+//
+def consensusNPercent(fasta) {
+    def total = 0L
+    def n     = 0L
+    fasta.eachLine { line ->
+        if (!line.startsWith('>')) {
+            total += line.length()
+            n     += line.count('N') + line.count('n')
+        }
+    }
+    return total ? 100.0 * n / total : 100.0
+}

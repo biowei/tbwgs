@@ -20,26 +20,21 @@ The `sample` identifiers have to be the same when you have re-sequenced the same
 
 ```csv title="samplesheet.csv"
 sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz
+TB001,TB001_S1_L002_R1_001.fastq.gz,TB001_S1_L002_R2_001.fastq.gz
+TB001,TB001_S1_L003_R1_001.fastq.gz,TB001_S1_L003_R2_001.fastq.gz
+TB001,TB001_S1_L004_R1_001.fastq.gz,TB001_S1_L004_R2_001.fastq.gz
 ```
 
 ### Full samplesheet
 
-The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 3 columns to match those defined in the table below.
-
-A final samplesheet file consisting of both single- and paired-end data may look something like the one below. This is for 6 samples, where `TREATMENT_REP3` has been sequenced twice.
+The pipeline accepts paired-end Illumina reads only. Each row needs `sample`, `fastq_1` and `fastq_2`. One sample is one isolate. Rows with the same `sample` are merged before read QC.
 
 ```csv title="samplesheet.csv"
 sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz
-CONTROL_REP3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz
-TREATMENT_REP1,AEG588A4_S4_L003_R1_001.fastq.gz,
-TREATMENT_REP2,AEG588A5_S5_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
+TB001,TB001_S1_L001_R1_001.fastq.gz,TB001_S1_L001_R2_001.fastq.gz
+TB001,TB001_S1_L002_R1_001.fastq.gz,TB001_S1_L002_R2_001.fastq.gz
+TB002,TB002_S2_L001_R1_001.fastq.gz,TB002_S2_L001_R2_001.fastq.gz
+TB003,TB003_S3_L001_R1_001.fastq.gz,TB003_S3_L001_R2_001.fastq.gz
 ```
 
 | Column    | Description                                                                                                                                                                            |
@@ -50,12 +45,29 @@ TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
+## Reference and databases
+
+The pipeline uses one frozen reference for the whole run.
+
+- `--mtb_tbdb`: the frozen tbdb (who_v2+ at commit `c4167762`), as a `.tar.gz` or a directory. It is required. TB-Profiler reads it for drug resistance and lineage, and the pipeline takes the H37Rv reference `genome.fasta` and the mask `mask.bed` from it. The archive must hold the database directory itself (the folder with `variables.json`); the test profile uses [this archive](https://github.com/biowei/tbwgs-test-datasets/tree/main/tbdb), which also shows how to build it.
+- `--mtb_reference` and `--mtb_mask_bed`: optional. Use them to replace the reference FASTA or the mask BED used for mapping and consensus. TB-Profiler always uses the reference inside `--mtb_tbdb`.
+- `--kraken2db`: a Kraken2 database, as a `.tar.gz` or a directory. It is required. The pipeline reports the percentage of reads classified as _M. tuberculosis_ complex (taxid 77643), so the database must contain that taxon.
+
+```bash
+nextflow run biowei/tbwgs \
+    --input samplesheet.csv \
+    --outdir results \
+    --mtb_tbdb tbdb_who_v2plus_c4167762.tar.gz \
+    --kraken2db k2_standard.tar.gz \
+    -profile docker
+```
+
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run biowei/tbwgs --input ./samplesheet.csv --outdir ./results  -profile docker
+nextflow run biowei/tbwgs --input ./samplesheet.csv --outdir ./results --mtb_tbdb <TBDB> --kraken2db <KRAKEN2DB> -profile docker
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.

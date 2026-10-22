@@ -14,9 +14,41 @@
 
 > Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
 
+- [BWA](https://pubmed.ncbi.nlm.nih.gov/19451168/)
+
+> Li H, Durbin R. Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics. 2009 Jul 15;25(14):1754-60. doi: 10.1093/bioinformatics/btp324. PubMed PMID: 19451168; PubMed Central PMCID: PMC2705234.
+
+- [fastp](https://pubmed.ncbi.nlm.nih.gov/30423086/)
+
+> Chen S, Zhou Y, Chen Y, Gu J. fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics. 2018 Sep 1;34(17):i884-i890. doi: 10.1093/bioinformatics/bty560. PubMed PMID: 30423086; PubMed Central PMCID: PMC6129281.
+
+- [Kraken2](https://pubmed.ncbi.nlm.nih.gov/31779668/)
+
+> Wood DE, Lu J, Langmead B. Improved metagenomic analysis with Kraken 2. Genome Biol. 2019 Nov 28;20(1):257. doi: 10.1186/s13059-019-1891-0. PubMed PMID: 31779668; PubMed Central PMCID: PMC6883579.
+
+- [mosdepth](https://pubmed.ncbi.nlm.nih.gov/29096012/)
+
+> Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018 Mar 1;34(5):867-868. doi: 10.1093/bioinformatics/btx699. PubMed PMID: 29096012; PubMed Central PMCID: PMC6030888.
+
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
 > Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+
+- [SAMtools and BCFtools](https://pubmed.ncbi.nlm.nih.gov/33590861/)
+
+> Danecek P, Bonfield JK, Liddle J, Marshall J, Ohan V, Pollard MO, Whitwham A, Keane T, McCarthy SA, Davies RM, Li H. Twelve years of SAMtools and BCFtools. Gigascience. 2021 Feb 16;10(2):giab008. doi: 10.1093/gigascience/giab008. PubMed PMID: 33590861; PubMed Central PMCID: PMC7931819.
+
+- [snp-dists](https://github.com/tseemann/snp-dists)
+
+> Seemann T. snp-dists: pairwise SNP distance matrix from a FASTA sequence alignment. Software, https://github.com/tseemann/snp-dists.
+
+- [SNP-sites](https://pubmed.ncbi.nlm.nih.gov/28348851/)
+
+> Page AJ, Taylor B, Delaney AJ, Soares J, Seemann T, Keane JA, Harris SR. SNP-sites: rapid efficient extraction of SNPs from multi-FASTA alignments. Microb Genom. 2016 Apr 29;2(4):e000056. doi: 10.1099/mgen.0.000056. PubMed PMID: 28348851; PubMed Central PMCID: PMC5320690.
+
+- [TB-Profiler](https://github.com/jodyphelan/TBProfiler) and its database [tbdb](https://github.com/jodyphelan/tbdb)
+
+> TB-Profiler 6.7.0 profiles drug resistance and lineage; the H37Rv reference (`genome.fasta`) and mask (`mask.bed`) are taken from tbdb. Phelan JE, O'Sullivan DM, Machado D, Ramos J, Oppong YEA, Campino S, O'Grady J, McNerney R, Hibberd ML, Viveiros M, Huggett JF, Clark TG. Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Med. 2019 Jun 24;11(1):41. doi: 10.1186/s13073-019-0650-x. PubMed PMID: 31234910; PubMed Central PMCID: PMC6591855.
 
 ## Software packaging/containerisation tools
 

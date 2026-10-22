@@ -20,7 +20,7 @@
                     "mimetype": "text/csv",
                     "pattern": "^\\S+\\.csv$",
                     "description": "Path to comma-separated file containing information about the samples in the experiment.",
-                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
+                    "help_text": "Create a samplesheet with one row per paired-end Illumina run before running the pipeline. It has to be a comma-separated file with 3 columns (sample, fastq_1, fastq_2) and a header row. Rows with the same sample name are merged.",
                     "fa_icon": "fas fa-file-csv"
                 },
                 "outdir": {
@@ -40,6 +40,121 @@
                     "type": "string",
                     "description": "MultiQC report title. Printed as page header, used for filename if not otherwise specified.",
                     "fa_icon": "fas fa-file-signature"
+                }
+            }
+        },
+        "reference_options": {
+            "title": "Reference and database options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Frozen H37Rv reference, mask and TB-Profiler mutation database.",
+            "properties": {
+                "mtb_tbdb": {
+                    "type": "string",
+                    "format": "path",
+                    "exists": true,
+                    "description": "Frozen tbdb archive (who_v2+ @ c4167762), as a .tar.gz or an extracted directory.",
+                    "help_text": "Build once with `tb-profiler update_tbdb --branch who_v2+ --commit c4167762ed361c679507e3f4ebe0cd277eae6102`, archive it and record its sha256. TB-Profiler reads this database for drug resistance and lineage. The pipeline also takes `genome.fasta` and `mask.bed` from it unless `--mtb_reference` or `--mtb_mask_bed` is given.",
+                    "fa_icon": "fas fa-database"
+                },
+                "mtb_reference": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "pattern": "^\\S+\\.f(ast|n)?a(\\.gz)?$",
+                    "description": "H37Rv reference FASTA. If unset, `genome.fasta` from the tbdb archive is used.",
+                    "fa_icon": "fas fa-book"
+                },
+                "mtb_mask_bed": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "pattern": "^\\S+\\.bed(\\.gz)?$",
+                    "description": "BED of regions written as N in consensus sequences. If unset, `mask.bed` from the tbdb archive is used.",
+                    "fa_icon": "fas fa-mask"
+                },
+                "kraken2db": {
+                    "type": "string",
+                    "format": "path",
+                    "exists": true,
+                    "description": "Kraken2 database, as a directory or .tar.gz. Used to estimate the fraction of MTBC reads.",
+                    "fa_icon": "fas fa-database"
+                }
+            },
+            "required": ["mtb_tbdb", "kraken2db"]
+        },
+        "qc_options": {
+            "title": "QC thresholds",
+            "type": "object",
+            "fa_icon": "fas fa-check-double",
+            "description": "Per-sample QC gates. Samples that fail are flagged in the report, never dropped.",
+            "properties": {
+                "mtb_min_mean_depth": {
+                    "type": "number",
+                    "default": 20,
+                    "minimum": 0,
+                    "description": "Minimum mean depth against H37Rv (x) for a sample to pass QC.",
+                    "help_text": "Confirmed 2026-10-21 as a starting value; adjust after local validation.",
+                    "fa_icon": "fas fa-layer-group"
+                },
+                "mtb_min_breadth": {
+                    "type": "number",
+                    "default": 95,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Minimum percentage of the genome covered at `--mtb_min_site_depth` or more for a sample to pass QC.",
+                    "fa_icon": "fas fa-percent"
+                },
+                "mtb_min_site_depth": {
+                    "type": "integer",
+                    "default": 10,
+                    "minimum": 1,
+                    "description": "Sites below this depth are written as N in the consensus; a drug whose target regions fall below it is reported as 'unable to interpret'.",
+                    "fa_icon": "fas fa-ruler-vertical"
+                },
+                "mtb_min_mtbc_fraction": {
+                    "type": "number",
+                    "default": 90,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Minimum percentage of reads classified as MTBC by Kraken2. Samples below it are flagged `LOW_MTBC` for review; they are not removed. If unset, no flag is set.",
+                    "help_text": "In the tbtamr validation set, clean isolates were 96-98% MTBC and one contaminated isolate was 75% with correct resistance calls, so the flag asks for review and does not block the result.",
+                    "fa_icon": "fas fa-biohazard"
+                }
+            }
+        },
+        "clustering_options": {
+            "title": "SNP clustering options",
+            "type": "object",
+            "fa_icon": "fas fa-project-diagram",
+            "description": "Pairwise SNP distances and single-linkage clusters.",
+            "properties": {
+                "mtb_snp_thresholds": {
+                    "type": "string",
+                    "default": "5,12",
+                    "pattern": "^\\d+(,\\d+)*$",
+                    "description": "Comma-separated SNP thresholds; one cluster column is reported per threshold.",
+                    "fa_icon": "fas fa-sitemap"
+                },
+                "mtb_max_consensus_n": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Maximum percentage of N in a consensus sequence for the sample to be clustered. The fixed H37Rv mask alone is about 7%.",
+                    "fa_icon": "fas fa-filter"
+                },
+                "mtb_historical_consensus": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "exists": true,
+                    "description": "Directory of consensus FASTA files (`*.fa` or `*.fasta`) from earlier runs to include in clustering. The file name without extension is the sample ID.",
+                    "fa_icon": "fas fa-history"
+                },
+                "mtb_skip_clustering": {
+                    "type": "boolean",
+                    "description": "Skip SNP distance calculation and clustering.",
+                    "fa_icon": "fas fa-fast-forward"
                 }
             }
         },
@@ -170,7 +285,7 @@
                     "type": "string",
                     "fa_icon": "far fa-check-circle",
                     "description": "Base URL or local path to location of pipeline test dataset files",
-                    "default": "https://raw.githubusercontent.com/nf-core/test-datasets/",
+                    "default": "https://raw.githubusercontent.com/biowei/tbwgs-test-datasets/main/",
                     "hidden": true
                 },
                 "trace_report_suffix": {
@@ -197,6 +312,15 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/reference_options"
+        },
+        {
+            "$ref": "#/$defs/qc_options"
+        },
+        {
+            "$ref": "#/$defs/clustering_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"

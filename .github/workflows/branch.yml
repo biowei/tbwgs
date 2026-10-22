@@ -17,7 +17,7 @@ jobs:
       - name: Check PRs
         if: github.repository == 'biowei/tbwgs'
         env:
-          HEAD_REPO:  ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           { [[ "$HEAD_REPO" == biowei/tbwgs ]] && [[ $GITHUB_HEAD_REF == "dev" ]]; } || [[ $GITHUB_HEAD_REF == "patch" ]]
 

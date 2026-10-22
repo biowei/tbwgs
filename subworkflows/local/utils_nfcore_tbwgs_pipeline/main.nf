@@ -186,6 +186,14 @@ def toolCitationText() {
     def citation_text = [
             "Tools used in the workflow included:",
             "FastQC (Andrews 2010),",
+            "fastp (Chen et al. 2018),",
+            "Kraken2 (Wood et al. 2019),",
+            "BWA (Li and Durbin 2009),",
+            "SAMtools and BCFtools (Danecek et al. 2021),",
+            "mosdepth (Pedersen and Quinlan 2018),",
+            "TB-Profiler (Phelan et al. 2019),",
+            "SNP-sites (Page et al. 2016),",
+            "snp-dists (Seemann),",
             "MultiQC (Ewels et al. 2016)",
             "."
         ].join(' ').trim()
@@ -199,6 +207,14 @@ def toolBibliographyText() {
     // Uncomment function in methodsDescriptionText to render in MultiQC report
     def reference_text = [
             "<li>Andrews S, (2010) FastQC, URL: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).</li>",
+            "<li>Chen S, Zhou Y, Chen Y, Gu J. (2018). fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics, 34(17), i884–i890. doi: 10.1093/bioinformatics/bty560</li>",
+            "<li>Wood DE, Lu J, Langmead B. (2019). Improved metagenomic analysis with Kraken 2. Genome Biology, 20(1), 257. doi: 10.1186/s13059-019-1891-0</li>",
+            "<li>Li H, Durbin R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics, 25(14), 1754–1760. doi: 10.1093/bioinformatics/btp324</li>",
+            "<li>Danecek P, et al. (2021). Twelve years of SAMtools and BCFtools. GigaScience, 10(2), giab008. doi: 10.1093/gigascience/giab008</li>",
+            "<li>Pedersen BS, Quinlan AR. (2018). Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics, 34(5), 867–868. doi: 10.1093/bioinformatics/btx699</li>",
+            "<li>Phelan JE, et al. (2019). Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Medicine, 11(1), 41. doi: 10.1186/s13073-019-0650-x</li>",
+            "<li>Page AJ, et al. (2016). SNP-sites: rapid efficient extraction of SNPs from multi-FASTA alignments. Microbial Genomics, 2(4), e000056. doi: 10.1099/mgen.0.000056</li>",
+            "<li>Seemann T. snp-dists: pairwise SNP distance matrix from a FASTA sequence alignment. URL: https://github.com/tseemann/snp-dists</li>",
             "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>"
         ].join(' ').trim()
 
