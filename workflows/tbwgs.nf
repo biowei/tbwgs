@@ -11,6 +11,7 @@ include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_cov
 include { CALL_MTB_VARIANTS      } from '../subworkflows/local/call_mtb_variants'
 include { PROFILE_DRUG_RESISTANCE } from '../subworkflows/local/profile_drug_resistance'
 include { CLUSTER_BY_SNP_DISTANCE } from '../subworkflows/local/cluster_by_snp_distance'
+include { SUMMARISE_MTB_RESULTS  } from '../subworkflows/local/summarise_mtb_results'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -89,13 +90,27 @@ workflow TBWGS {
     //
     // SUBWORKFLOW: M5 - SNP distances and clusters for PASS samples plus historical consensus sequences
     //
+    def ch_clusters = channel.empty()
     if (!params.mtb_skip_clustering) {
         CLUSTER_BY_SNP_DISTANCE(
             CALL_MTB_VARIANTS.out.consensus,
             PREPARE_MTB_REFERENCE.out.fasta,
             params.mtb_historical_consensus
         )
+        ch_clusters = CLUSTER_BY_SNP_DISTANCE.out.clusters
     }
+
+    //
+    // SUBWORKFLOW: M6 - one row per sample, FAIL samples and samples without results included
+    //
+    SUMMARISE_MTB_RESULTS(
+        PREPROCESS_READS.out.mtbc_fraction,
+        CHECK_MAPPING_COVERAGE.out.bam,
+        PROFILE_DRUG_RESISTANCE.out.json,
+        ch_clusters,
+        PREPARE_MTB_REFERENCE.out.tbdb
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(SUMMARISE_MTB_RESULTS.out.multiqc_files)
 
     //
     // Collate and save software versions
