@@ -2,6 +2,21 @@
     "-profile test": {
         "content": [
             {
+                "BCFTOOLS_CONSENSUS": {
+                    "bcftools": "1.23.1"
+                },
+                "BCFTOOLS_FILTER": {
+                    "bcftools": "1.23.1"
+                },
+                "BCFTOOLS_MPILEUP": {
+                    "bcftools": "1.23.1"
+                },
+                "BCFTOOLS_NORM": {
+                    "bcftools": "1.23.1"
+                },
+                "BCFTOOLS_STATS": {
+                    "bcftools": "1.23.1"
+                },
                 "BWA_INDEX": {
                     "bwa": "0.7.19-r1273"
                 },
@@ -21,6 +36,9 @@
                 "KRAKEN2_KRAKEN2": {
                     "kraken2": "2.1.6",
                     "pigz": 2.8
+                },
+                "MERGE_MASK_BED": {
+                    "grep": 3.11
                 },
                 "MOSDEPTH": {
                     "gzip": 1.14,
@@ -53,6 +71,11 @@
                 "alignment/TB_SIM2.markdup.bam",
                 "alignment/TB_SIM2.markdup.bam.bai",
                 "alignment/TB_SIM2.markdup.metrics",
+                "consensus",
+                "consensus/TB_SIM1.fa",
+                "consensus/TB_SIM1.mask.bed",
+                "consensus/TB_SIM2.fa",
+                "consensus/TB_SIM2.mask.bed",
                 "coverage",
                 "coverage/TB_SIM1.mosdepth.global.dist.txt",
                 "coverage/TB_SIM1.mosdepth.summary.txt",
@@ -85,6 +108,7 @@
                 "kraken2/TB_SIM2.kraken2.report.txt",
                 "multiqc",
                 "multiqc/multiqc_data",
+                "multiqc/multiqc_data/bcftools_stats_indel-lengths.txt",
                 "multiqc/multiqc_data/fastp-insert-size-plot.txt",
                 "multiqc/multiqc_data/fastp-seq-content-gc-plot_Read_1_After_filtering.txt",
                 "multiqc/multiqc_data/fastp-seq-content-gc-plot_Read_1_Before_filtering.txt",
@@ -116,6 +140,7 @@
                 "multiqc/multiqc_data/mosdepth_perchrom.txt",
                 "multiqc/multiqc_data/multiqc.log",
                 "multiqc/multiqc_data/multiqc.parquet",
+                "multiqc/multiqc_data/multiqc_bcftools_stats.txt",
                 "multiqc/multiqc_data/multiqc_citations.txt",
                 "multiqc/multiqc_data/multiqc_data.json",
                 "multiqc/multiqc_data/multiqc_fastp.txt",
@@ -130,6 +155,8 @@
                 "multiqc/multiqc_data/samtools_insert_size.txt",
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_plots/pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-cnt.pdf",
+                "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-log.pdf",
                 "multiqc/multiqc_plots/pdf/fastp-insert-size-plot.pdf",
                 "multiqc/multiqc_plots/pdf/fastp-seq-content-gc-plot_Read_1_After_filtering.pdf",
                 "multiqc/multiqc_plots/pdf/fastp-seq-content-gc-plot_Read_1_Before_filtering.pdf",
@@ -164,6 +191,8 @@
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-pct.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_insert_size.pdf",
                 "multiqc/multiqc_plots/png",
+                "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-cnt.png",
+                "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-log.png",
                 "multiqc/multiqc_plots/png/fastp-insert-size-plot.png",
                 "multiqc/multiqc_plots/png/fastp-seq-content-gc-plot_Read_1_After_filtering.png",
                 "multiqc/multiqc_plots/png/fastp-seq-content-gc-plot_Read_1_Before_filtering.png",
@@ -198,6 +227,8 @@
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-pct.png",
                 "multiqc/multiqc_plots/png/samtools_insert_size.png",
                 "multiqc/multiqc_plots/svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-cnt.svg",
+                "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-log.svg",
                 "multiqc/multiqc_plots/svg/fastp-insert-size-plot.svg",
                 "multiqc/multiqc_plots/svg/fastp-seq-content-gc-plot_Read_1_After_filtering.svg",
                 "multiqc/multiqc_plots/svg/fastp-seq-content-gc-plot_Read_1_Before_filtering.svg",
@@ -233,11 +264,22 @@
                 "multiqc/multiqc_plots/svg/samtools_insert_size.svg",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/tbwgs_software_mqc_versions.yml"
+                "pipeline_info/tbwgs_software_mqc_versions.yml",
+                "variants",
+                "variants/TB_SIM1.bcftools_stats.txt",
+                "variants/TB_SIM1.filtered.vcf.gz",
+                "variants/TB_SIM1.filtered.vcf.gz.tbi",
+                "variants/TB_SIM2.bcftools_stats.txt",
+                "variants/TB_SIM2.filtered.vcf.gz",
+                "variants/TB_SIM2.filtered.vcf.gz.tbi"
             ],
             [
                 "TB_SIM1.markdup.metrics:md5,343fdb00ed28fb87d4c70589ef330808",
                 "TB_SIM2.markdup.metrics:md5,282e7b3870d2139783237c1f568d5321",
+                "TB_SIM1.fa:md5,6cd0a67bb2189c156b3d108a7ad88700",
+                "TB_SIM1.mask.bed:md5,3d3ba4ce15736770afbdf550ad8c2c81",
+                "TB_SIM2.fa:md5,6cd0a67bb2189c156b3d108a7ad88700",
+                "TB_SIM2.mask.bed:md5,3d3ba4ce15736770afbdf550ad8c2c81",
                 "TB_SIM1.mosdepth.global.dist.txt:md5,7467067a5d69c83eabb7936ffc77f852",
                 "TB_SIM1.mosdepth.summary.txt:md5,23587ebf8e4dece65d179d3256e0321e",
                 "TB_SIM1.quantized.bed.gz:md5,ccfec4037e222f82690229b40f3311e4",
@@ -250,6 +292,7 @@
                 "TB_SIM2.stats:md5,9d613b2df612200cf9a6ce5590c90da8",
                 "TB_SIM1.kraken2.report.txt:md5,20934b46b5f1c52c4d6c54618d2b99ba",
                 "TB_SIM2.kraken2.report.txt:md5,20934b46b5f1c52c4d6c54618d2b99ba",
+                "bcftools_stats_indel-lengths.txt:md5,b4b813dd14a2eac86603ba26159cd068",
                 "fastp-insert-size-plot.txt:md5,5b9d1a3ab63528f11de4b725950f8c64",
                 "fastp-seq-content-gc-plot_Read_1_After_filtering.txt:md5,f7858ff66d263d6ff44be4560a586195",
                 "fastp-seq-content-gc-plot_Read_1_Before_filtering.txt:md5,73c7f9ec7e22ef1ff1ca635472c51744",
@@ -278,18 +321,21 @@
                 "mosdepth_cov_dist.txt:md5,159ddc80b00782013e198626bdbe0548",
                 "mosdepth_cumcov_dist.txt:md5,159ddc80b00782013e198626bdbe0548",
                 "mosdepth_perchrom.txt:md5,856b2fb1fdfe49a96a264490067e5371",
-                "multiqc_citations.txt:md5,754903619a03fae443ca0c3f039ea857",
+                "multiqc_bcftools_stats.txt:md5,56bbb5c195f2848fa841a755c32810ba",
+                "multiqc_citations.txt:md5,7975b17796c1ddb28af4e440e857a791",
                 "multiqc_fastp.txt:md5,0bb3056fda7f703cb2919127a7facc69",
                 "multiqc_fastqc.txt:md5,1cc0b2b2ad64228e74b55dc58575f990",
-                "multiqc_general_stats.txt:md5,886948534d2e45c6970fcf2429e08f04",
+                "multiqc_general_stats.txt:md5,bfc6015351c9db4d8ee8a72c65e96ae6",
                 "multiqc_kraken.txt:md5,df8353172804e9a3bd1205f75278917c",
                 "multiqc_samtools_stats.txt:md5,4dd8e44ee63f6eef9d8769ef856d5862",
                 "samtools-stats-dp.txt:md5,7032f90e90ef003ddbf5970bf7ce4980",
                 "samtools_alignment_plot.txt:md5,57b6a30f4f39312f0b4d6cc73b69665c",
-                "samtools_insert_size.txt:md5,ea2a07ebb6770fbd720c71cf6f19f9a4"
+                "samtools_insert_size.txt:md5,ea2a07ebb6770fbd720c71cf6f19f9a4",
+                "TB_SIM1.bcftools_stats.txt:md5,a0b1b4a00016d52ea77e03a641eb8ac4",
+                "TB_SIM2.bcftools_stats.txt:md5,a6c186ae9652022797158fabd9e4fbbe"
             ]
         ],
-        "timestamp": "2026-10-22T01:07:37.6942787",
+        "timestamp": "2026-10-22T01:33:09.670291734",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

@@ -12,3 +12,4 @@ fastqc/*_fastqc.{html,zip}
 pipeline_info/*.{html,json,txt,yml}
 fastp/*.{html,json,log}
 alignment/*.{bam,bai}
+variants/*.{vcf.gz,vcf.gz.tbi}

@@ -8,6 +8,7 @@ include { PREPROCESS_READS       } from '../subworkflows/local/preprocess_reads'
 include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_reference'
 include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37rv'
 include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_coverage'
+include { CALL_MTB_VARIANTS      } from '../subworkflows/local/call_mtb_variants'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -65,6 +66,18 @@ workflow TBWGS {
         params.mtb_min_site_depth
     )
     ch_multiqc_files = ch_multiqc_files.mix(CHECK_MAPPING_COVERAGE.out.multiqc_files)
+
+    //
+    // SUBWORKFLOW: M3 - haploid variant calls and masked consensus, for every sample
+    //
+    CALL_MTB_VARIANTS(
+        CHECK_MAPPING_COVERAGE.out.bam,
+        CHECK_MAPPING_COVERAGE.out.quantized_bed,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai,
+        PREPARE_MTB_REFERENCE.out.mask
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(CALL_MTB_VARIANTS.out.multiqc_files)
 
     //
     // Collate and save software versions
