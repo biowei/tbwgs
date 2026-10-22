@@ -1,0 +1,121 @@
+sample	drug	tbwgs	tbwgs_raw	tbtamr	tbtamr_raw	tbtamr_mechanisms	phenotype	agree_tbtamr	agree_pheno
+ERR3287635	rifampicin	R	resistant	R	Resistant	rpoB_p.Ser450Leu (High)	R	yes	yes
+ERR3287635	isoniazid	R	resistant	R	Low-level resistant	inhA_c.-154G>A (High)	R	yes	yes
+ERR3287635	ethambutol	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR3287635	pyrazinamide	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	levofloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	moxifloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain)		yes	
+ERR3287635	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	delamanid	S	not_detected	S	Susceptible (not reportable)	fgd1_p.Lys270Met (Uncertain)		yes	
+ERR3287635	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	kanamycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287635	capreomycin	S	not_detected	S	Susceptible (not reportable)	Rv2680_c.-71G>A (Uncertain)		yes	
+ERR3287635	streptomycin	R	resistant	R	Resistant	rpsL_p.Lys43Arg (High)		yes	
+ERR3287635	ethionamide	R	resistant	R	Resistant	inhA_c.-154G>A (Moderate);Rv0565c_p.Ser68Pro (Uncertain)		yes	
+ERR3287775	rifampicin	R	resistant	R	Resistant	rpoB_p.Asp435Val (High)	R	yes	yes
+ERR3287775	isoniazid	R	resistant	R	Resistant	katG_p.Ser315Thr (High)	R	yes	yes
+ERR3287775	ethambutol	R	resistant	R	Resistant	embB_p.Met306Val (High);embA_p.Asn54Asp (Uncertain);ubiA_p.Ala35Ser (Uncertain)	R	yes	yes
+ERR3287775	pyrazinamide	R	resistant	R	Resistant	pncA_p.Lys48Thr (Moderate)		yes	
+ERR3287775	levofloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287775	moxifloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287775	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain)		yes	
+ERR3287775	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287775	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287775	delamanid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR3287775	amikacin	R	resistant	R	Resistant	rrs_n.1401A>G (High)		yes	
+ERR3287775	kanamycin	R	resistant	R	Resistant	rrs_n.1401A>G (High)		yes	
+ERR3287775	capreomycin	R	resistant	R	Resistant	rrs_n.1401A>G (High)		yes	
+ERR3287775	streptomycin	S	not_detected	S	Susceptible (not reportable)	gid_p.Gly73Arg (Uncertain);rrs_n.1401A>G (Uncertain)		yes	
+ERR3287775	ethionamide	S	not_detected	S	Susceptible (not reportable)	ethA_p.Pro378Leu (Uncertain)		yes	
+ERR4809348	rifampicin	R	resistant	R	Resistant	rpoB_p.Ser450Leu (High);rpoB_p.Gln975His (Uncertain);rpoC_p.Val1252Leu (Uncertain)	R	yes	yes
+ERR4809348	isoniazid	R	resistant	R	Low-level resistant	inhA_c.-154G>A (High);inhA_p.Ile194Thr (Uncertain)	R	yes	yes
+ERR4809348	ethambutol	R	resistant	R	Resistant	embB_p.Met306Val (High);aftB_p.Val293Met (Uncertain)	R	yes	yes
+ERR4809348	pyrazinamide	R	resistant	R	Resistant	pncA_p.Gly97Asp (High);clpC1_c.-15A>G (Uncertain);PPE35_p.Gly624Asp (Uncertain)		yes	
+ERR4809348	levofloxacin	S	not_detected	S	Susceptible (not reportable)	gyrA_p.Asn193Ser (Uncertain)		yes	
+ERR4809348	moxifloxacin	S	not_detected	S	Susceptible (not reportable)	gyrA_p.Asn193Ser (Uncertain)		yes	
+ERR4809348	bedaquiline	S	not_detected	S	Susceptible (not reportable)	lpqB_p.Asp142Gly (Uncertain);mtrB_p.Met517Leu (Uncertain);Rv1979c_c.-389C>A (Uncertain)		yes	
+ERR4809348	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4809348	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4809348	delamanid	S	not_detected	S	Susceptible (not reportable)	ndh_p.Arg268His (Uncertain)		yes	
+ERR4809348	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4809348	kanamycin	S	not_detected	S	Susceptible (not reportable)	rrs_n.517C>T (Uncertain)		yes	
+ERR4809348	capreomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4809348	streptomycin	R	resistant	R	Resistant	rrs_n.517C>T (High);gid_p.Ala119Thr (Uncertain)		yes	
+ERR4809348	ethionamide	R	resistant	R	Resistant	inhA_c.-154G>A (Moderate);ethA_p.Asn345Lys (Uncertain);inhA_p.Ile194Thr (Uncertain);ndh_p.Arg268His (Uncertain);Rv3083_p.Asp71His (Uncertain)		yes	
+ERR4811536	rifampicin	R	resistant	R	Resistant	rpoB_p.His445Leu (High)	S	yes	no
+ERR4811536	isoniazid	R	resistant	R	Resistant	katG_p.Ser315Asn (High);Rv1258c_LoF (Uncertain)	R	yes	yes
+ERR4811536	ethambutol	R	resistant	R	Resistant	embB_p.Met306Val (High);embA_c.-15C>G (Uncertain);embA_p.Arg380Leu (Uncertain);embR_c.-50T>C (Uncertain);ubiA_p.Ala237Thr (Uncertain)	R	yes	yes
+ERR4811536	pyrazinamide	R	resistant	R	Resistant	pncA_c.-11A>G (High);pncA_LoF (High);Rv1258c_LoF (Uncertain)		yes	
+ERR4811536	levofloxacin	R	resistant	R	Resistant	gyrA_p.Asp94Gly (High)		yes	
+ERR4811536	moxifloxacin	R	resistant	R	Resistant	gyrA_p.Asp94Gly (High)		yes	
+ERR4811536	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain);mtrB_p.Pro18Ser (Uncertain)		yes	
+ERR4811536	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4811536	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4811536	delamanid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4811536	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4811536	kanamycin	S	not_detected	S	Susceptible (not reportable)	ccsA_p.Ile245Met (Uncertain)		yes	
+ERR4811536	capreomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4811536	streptomycin	S	not_detected	S	Susceptible (not reportable)	Rv1258c_LoF (Uncertain)		yes	
+ERR4811536	ethionamide	S	not_detected	S	Susceptible (not reportable)	Rv0565c_p.Arg110His (Uncertain)		yes	
+ERR4813225	rifampicin	S	not_detected	S	Susceptible (not reportable)	Rv1129c_p.Ser480Pro (Uncertain)	S	yes	yes
+ERR4813225	isoniazid	S	not_detected	S	Susceptible (not reportable)	Rv1129c_p.Ser480Pro (Uncertain)	S	yes	yes
+ERR4813225	ethambutol	S	not_detected	S	Susceptible (not reportable)	embB_p.Pro731Leu (Uncertain)	S	yes	yes
+ERR4813225	pyrazinamide	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4813225	levofloxacin	S	not_detected	S	Susceptible (not reportable)	Rv1129c_p.Ser480Pro (Uncertain)		yes	
+ERR4813225	moxifloxacin	S	not_detected	S	Susceptible (not reportable)	Rv1129c_p.Ser480Pro (Uncertain)		yes	
+ERR4813225	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain)		yes	
+ERR4813225	linezolid	U	uninterpretable	S	Susceptible	No mechanisms identified		no	
+ERR4813225	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4813225	delamanid	S	not_detected	S	Susceptible (not reportable)	fgd1_p.Lys270Met (Uncertain)		yes	
+ERR4813225	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4813225	kanamycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4813225	capreomycin	S	not_detected	S	Susceptible (not reportable)	Rv2680_c.-20G>A (Uncertain)		yes	
+ERR4813225	streptomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4813225	ethionamide	S	not_detected	S	Susceptible (not reportable)	Rv0565c_p.Ser68Pro (Uncertain)		yes	
+ERR4831755	rifampicin	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR4831755	isoniazid	R	resistant	R	Resistant	katG_p.Ser315Thr (High)	R	yes	yes
+ERR4831755	ethambutol	S	not_detected	S	Susceptible (not reportable)	aftB_p.Ser273Leu (Uncertain)	S	yes	yes
+ERR4831755	pyrazinamide	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4831755	levofloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4831755	moxifloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR4831755	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain);mtrB_p.Pro18Ser (Uncertain)		yes	
+ERR4831755	linezolid	S	not_detected	S	Susceptible (not reportable)	rrl_n.2503T>C (Uncertain);rrl_n.2564T>C (Uncertain);rrl_n.2624T>C (Uncertain)		yes	
+ERR4831755	clofazimine	S	not_detected	S	Susceptible (not reportable)	fbiB_p.Ala31Thr (Uncertain)		yes	
+ERR4831755	delamanid	S	not_detected	S	Susceptible (not reportable)	fbiB_p.Ala31Thr (Uncertain)		yes	
+ERR4831755	amikacin	S	not_detected	S	Susceptible (not reportable)	rrs_n.619A>G (Uncertain)		yes	
+ERR4831755	kanamycin	S	not_detected	S	Susceptible (not reportable)	ccsA_p.Ile245Met (Uncertain);rrs_n.619A>G (Uncertain);rrs_n.889C>T (Uncertain);rrs_n.896G>A (Uncertain)		yes	
+ERR4831755	capreomycin	S	not_detected	S	Susceptible (not reportable)	rrl_n.2503T>C (Uncertain);rrl_n.2564T>C (Uncertain);rrl_n.2624T>C (Uncertain);rrs_n.619A>G (Uncertain)		yes	
+ERR4831755	streptomycin	R	resistant	R	Resistant	rpsL_p.Lys43Arg (High);rrs_n.619A>G (Uncertain);rrs_n.889C>T (Uncertain);rrs_n.896G>A (Uncertain)		yes	
+ERR4831755	ethionamide	S	not_detected	S	Susceptible (not reportable)	Rv0565c_p.Arg110His (Uncertain)		yes	
+ERR8975009	rifampicin	R	resistant	R	Low-level resistant	rpoB_p.Leu430Pro (High)	R	yes	yes
+ERR8975009	isoniazid	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR8975009	ethambutol	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR8975009	pyrazinamide	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	levofloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	moxifloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	bedaquiline	S	not_detected	S	Susceptible (not reportable)	mtrB_p.Met517Leu (Uncertain)		yes	
+ERR8975009	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	delamanid	S	not_detected	S	Susceptible (not reportable)	ndh_p.Val18Ala (Uncertain)		yes	
+ERR8975009	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	kanamycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	capreomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975009	streptomycin	S	not_detected	S	Susceptible (not reportable)	gid_p.His48Asn (Uncertain)		yes	
+ERR8975009	ethionamide	S	not_detected	S	Susceptible (not reportable)	ndh_p.Val18Ala (Uncertain)		yes	
+ERR8975345	rifampicin	S	not_detected	S	Susceptible (not reportable)	nusG_c.-113G>A (Uncertain)	S	yes	yes
+ERR8975345	isoniazid	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR8975345	ethambutol	S	not_detected	S	Susceptible	No mechanisms identified	S	yes	yes
+ERR8975345	pyrazinamide	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	levofloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	moxifloxacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	bedaquiline	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	linezolid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	clofazimine	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	delamanid	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	amikacin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	kanamycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	capreomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	streptomycin	S	not_detected	S	Susceptible	No mechanisms identified		yes	
+ERR8975345	ethionamide	S	not_detected	S	Susceptible (not reportable)	Rv0565c_LoF (Uncertain);Rv3083_deletion (Uncertain);Rv3083_LoF (Uncertain)		yes	
