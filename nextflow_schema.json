@@ -139,7 +139,7 @@
                     "type": "string",
                     "format": "directory-path",
                     "exists": true,
-                    "description": "Directory of consensus FASTA files (`*.fa`) from earlier runs to include in clustering.",
+                    "description": "Directory of consensus FASTA files (`*.fa` or `*.fasta`) from earlier runs to include in clustering. The file name without extension is the sample ID.",
                     "fa_icon": "fas fa-history"
                 },
                 "mtb_skip_clustering": {

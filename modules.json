@@ -90,6 +90,16 @@
                         "git_sha": "5f344f0e41fdfaf2506f89400e42a2689d6ab323",
                         "installed_by": ["modules"]
                     },
+                    "snpdists": {
+                        "branch": "master",
+                        "git_sha": "ef9f880ba4dd24c3601ad732d08ef2b94e6a6038",
+                        "installed_by": ["modules"]
+                    },
+                    "snpsites": {
+                        "branch": "master",
+                        "git_sha": "ae73cfe626c4a0cad72d870779561b4dad290e24",
+                        "installed_by": ["modules"]
+                    },
                     "untar": {
                         "branch": "master",
                         "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",

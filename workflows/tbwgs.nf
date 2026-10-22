@@ -10,6 +10,7 @@ include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37r
 include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_coverage'
 include { CALL_MTB_VARIANTS      } from '../subworkflows/local/call_mtb_variants'
 include { PROFILE_DRUG_RESISTANCE } from '../subworkflows/local/profile_drug_resistance'
+include { CLUSTER_BY_SNP_DISTANCE } from '../subworkflows/local/cluster_by_snp_distance'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -84,6 +85,17 @@ workflow TBWGS {
     // SUBWORKFLOW: M4 - TB-Profiler drug resistance and lineage, in parallel with M1-M3
     //
     PROFILE_DRUG_RESISTANCE(PREPROCESS_READS.out.reads, PREPARE_MTB_REFERENCE.out.tbdb)
+
+    //
+    // SUBWORKFLOW: M5 - SNP distances and clusters for PASS samples plus historical consensus sequences
+    //
+    if (!params.mtb_skip_clustering) {
+        CLUSTER_BY_SNP_DISTANCE(
+            CALL_MTB_VARIANTS.out.consensus,
+            PREPARE_MTB_REFERENCE.out.fasta,
+            params.mtb_historical_consensus
+        )
+    }
 
     //
     // Collate and save software versions
