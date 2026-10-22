@@ -15,6 +15,7 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 - Read preprocessing subworkflow `PREPROCESS_READS`: lane merging (`cat`), FastQC, fastp and Kraken2, with the percentage of MTBC reads per sample.
 - Reference subworkflow `PREPARE_MTB_REFERENCE`: H37Rv FASTA and mask from the frozen tbdb (or `--mtb_reference` and `--mtb_mask_bed`), samtools faidx and BWA index.
 - Mapping subworkflow `MAP_READS_TO_H37RV`: BWA-MEM with a read group per sample, `samtools` collate, fixmate, sort and markdup in one step, and a BAM index. BAMs are saved in `alignment/`.
+- Coverage subworkflow `CHECK_MAPPING_COVERAGE`: mosdepth and samtools stats. Each sample gets `mtb_mean_depth`, `mtb_breadth` and `mtb_qc` (`PASS` / `FAIL`) in its meta from `--mtb_min_mean_depth`, `--mtb_min_breadth` and `--mtb_min_site_depth`. No sample is dropped. Reports and a LOW / PASS coverage BED are saved in `coverage/`.
 - `--kraken2db` is now required. The pipeline stops early unless `--mtb_tbdb`, or both `--mtb_reference` and `--mtb_mask_bed`, are given.
 
 ### `Fixed`
@@ -26,6 +27,7 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 | `bwa`      | 0.7.19      |
 | `fastp`    | 1.4.0       |
 | `kraken2`  | 2.1.6       |
+| `mosdepth` | 0.3.14      |
 | `samtools` | 1.24        |
 
 ### `Deprecated`

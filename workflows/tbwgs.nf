@@ -7,6 +7,7 @@ include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { PREPROCESS_READS       } from '../subworkflows/local/preprocess_reads'
 include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_reference'
 include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37rv'
+include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_coverage'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -51,6 +52,19 @@ workflow TBWGS {
         PREPARE_MTB_REFERENCE.out.fasta,
         PREPARE_MTB_REFERENCE.out.fai
     )
+
+    //
+    // SUBWORKFLOW: M2 - coverage gate; flags samples PASS / FAIL in meta, drops none
+    //
+    CHECK_MAPPING_COVERAGE(
+        MAP_READS_TO_H37RV.out.bam,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai,
+        params.mtb_min_mean_depth,
+        params.mtb_min_breadth,
+        params.mtb_min_site_depth
+    )
+    ch_multiqc_files = ch_multiqc_files.mix(CHECK_MAPPING_COVERAGE.out.multiqc_files)
 
     //
     // Collate and save software versions

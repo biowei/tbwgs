@@ -35,6 +35,11 @@
                         "git_sha": "d67d33d5925fcec4691b499670fa2bd926fd2be5",
                         "installed_by": ["modules"]
                     },
+                    "mosdepth": {
+                        "branch": "master",
+                        "git_sha": "999b9db1d6b8bdc591e1168e183f4cc87d6606f9",
+                        "installed_by": ["modules"]
+                    },
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "98403d15b0e50edae1f3fec5eae5e24982f1fade",
@@ -51,6 +56,11 @@
                         "installed_by": ["modules"]
                     },
                     "samtools/sormadup": {
+                        "branch": "master",
+                        "git_sha": "5f344f0e41fdfaf2506f89400e42a2689d6ab323",
+                        "installed_by": ["modules"]
+                    },
+                    "samtools/stats": {
                         "branch": "master",
                         "git_sha": "5f344f0e41fdfaf2506f89400e42a2689d6ab323",
                         "installed_by": ["modules"]

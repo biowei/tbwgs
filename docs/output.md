@@ -16,6 +16,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [fastp](#fastp) - Adapter and quality trimming
 - [Kraken2](#kraken2) - Read classification, used to report the fraction of reads from the _M. tuberculosis_ complex (MTBC)
 - [Alignment](#alignment) - Reads mapped to H37Rv, sorted, with duplicates marked
+- [Coverage](#coverage) - Depth and breadth of coverage, and the per-sample coverage QC flag
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -71,6 +72,21 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 </details>
 
 [BWA-MEM](https://github.com/lh3/bwa) maps the reads to the reference from `--mtb_tbdb` or `--mtb_reference`. [SAMtools](https://www.htslib.org/) then runs `collate`, `fixmate`, `sort` and `markdup` in one pipe. Duplicates are marked, not removed.
+
+### Coverage
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `coverage/`
+  - `*.mosdepth.summary.txt`: mean depth; the `total` row is used for the QC flag.
+  - `*.mosdepth.global.dist.txt`: fraction of the genome at each depth or more.
+  - `*.quantized.bed.gz` and `*.quantized.bed.gz.csi`: the genome split into `LOW` (below `--mtb_min_site_depth`) and `PASS` regions. The variant calling step uses the `LOW` regions to mask the consensus sequence with N.
+  - `*.stats`: `samtools stats` output.
+
+</details>
+
+[mosdepth](https://github.com/brentp/mosdepth) measures coverage of the deduplicated BAM. Each sample is flagged `PASS` when its mean depth is at least `--mtb_min_mean_depth` (default 20×) and at least `--mtb_min_breadth` percent of the genome (default 95%) is covered at `--mtb_min_site_depth` or more (default 10×); otherwise it is flagged `FAIL`. The flag never removes a sample: `FAIL` samples still get variant calls and drug resistance results, and are only left out of SNP clustering. Both coverage reports and `samtools stats` are shown in MultiQC.
 
 ### MultiQC
 
