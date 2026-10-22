@@ -30,7 +30,8 @@
 4. Fraction of _M. tuberculosis_ complex reads ([`Kraken2`](https://ccb.jhu.edu/software/kraken2/))
 5. Prepare the H37Rv reference and BWA index from the frozen tbdb ([`SAMtools`](https://www.htslib.org/), [`BWA`](https://github.com/lh3/bwa))
 6. Map reads to H37Rv, sort and mark duplicates ([`BWA-MEM`](https://github.com/lh3/bwa), [`SAMtools`](https://www.htslib.org/))
-7. Present QC ([`MultiQC`](http://multiqc.info/))
+7. Coverage QC flag per sample, without dropping samples ([`mosdepth`](https://github.com/brentp/mosdepth), [`SAMtools`](https://www.htslib.org/))
+8. Present QC ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 

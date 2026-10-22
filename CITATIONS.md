@@ -26,6 +26,10 @@
 
 > Wood DE, Lu J, Langmead B. Improved metagenomic analysis with Kraken 2. Genome Biol. 2019 Nov 28;20(1):257. doi: 10.1186/s13059-019-1891-0. PubMed PMID: 31779668; PubMed Central PMCID: PMC6883579.
 
+- [mosdepth](https://pubmed.ncbi.nlm.nih.gov/29096012/)
+
+> Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018 Mar 1;34(5):867-868. doi: 10.1093/bioinformatics/btx699. PubMed PMID: 29096012; PubMed Central PMCID: PMC6030888.
+
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
 > Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
