@@ -83,11 +83,6 @@ workflow PIPELINE_INITIALISATION {
     )
 
     //
-    // Check that a reference FASTA and mask BED can be found
-    //
-    validateReferenceParameters(params.mtb_tbdb, params.mtb_reference, params.mtb_mask_bed)
-
-    //
     // Create channel from input file provided through params.input
     //
 
@@ -168,15 +163,6 @@ workflow PIPELINE_COMPLETION {
 */
 
 //
-// The reference FASTA and mask BED come from --mtb_tbdb unless both are given directly
-//
-def validateReferenceParameters(tbdb, reference, mask) {
-    if (!tbdb && !(reference && mask)) {
-        error("Please provide --mtb_tbdb, or both --mtb_reference and --mtb_mask_bed.")
-    }
-}
-
-//
 // Validate channels from input samplesheet
 //
 def validateInputSamplesheet(input) {
@@ -205,6 +191,7 @@ def toolCitationText() {
             "BWA (Li and Durbin 2009),",
             "SAMtools and BCFtools (Danecek et al. 2021),",
             "mosdepth (Pedersen and Quinlan 2018),",
+            "TB-Profiler (Phelan et al. 2019),",
             "MultiQC (Ewels et al. 2016)",
             "."
         ].join(' ').trim()
@@ -223,6 +210,7 @@ def toolBibliographyText() {
             "<li>Li H, Durbin R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics, 25(14), 1754–1760. doi: 10.1093/bioinformatics/btp324</li>",
             "<li>Danecek P, et al. (2021). Twelve years of SAMtools and BCFtools. GigaScience, 10(2), giab008. doi: 10.1093/gigascience/giab008</li>",
             "<li>Pedersen BS, Quinlan AR. (2018). Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics, 34(5), 867–868. doi: 10.1093/bioinformatics/btx699</li>",
+            "<li>Phelan JE, et al. (2019). Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Medicine, 11(1), 41. doi: 10.1186/s13073-019-0650-x</li>",
             "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>"
         ].join(' ').trim()
 

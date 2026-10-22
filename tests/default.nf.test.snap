@@ -56,7 +56,13 @@
                 "SAMTOOLS_STATS": {
                     "samtools": 1.24
                 },
+                "TBPROFILER_PROFILE": {
+                    "tb-profiler": "6.7.0"
+                },
                 "UNTAR_KRAKEN2DB": {
+                    "untar": 1.34
+                },
+                "UNTAR_TBDB": {
                     "untar": 1.34
                 },
                 "Workflow": {
@@ -265,6 +271,13 @@
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/tbwgs_software_mqc_versions.yml",
+                "tbprofiler",
+                "tbprofiler/TB_SIM1.results.csv",
+                "tbprofiler/TB_SIM1.results.json",
+                "tbprofiler/TB_SIM1.results.txt",
+                "tbprofiler/TB_SIM2.results.csv",
+                "tbprofiler/TB_SIM2.results.json",
+                "tbprofiler/TB_SIM2.results.txt",
                 "variants",
                 "variants/TB_SIM1.bcftools_stats.txt",
                 "variants/TB_SIM1.filtered.vcf.gz",
@@ -335,7 +348,7 @@
                 "TB_SIM2.bcftools_stats.txt:md5,a6c186ae9652022797158fabd9e4fbbe"
             ]
         ],
-        "timestamp": "2026-10-22T01:33:09.670291734",
+        "timestamp": "2026-10-22T03:21:09.335817914",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

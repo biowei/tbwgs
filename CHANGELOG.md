@@ -17,19 +17,23 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 - Mapping subworkflow `MAP_READS_TO_H37RV`: BWA-MEM with a read group per sample, `samtools` collate, fixmate, sort and markdup in one step, and a BAM index. BAMs are saved in `alignment/`.
 - Coverage subworkflow `CHECK_MAPPING_COVERAGE`: mosdepth and samtools stats. Each sample gets `mtb_mean_depth`, `mtb_breadth` and `mtb_qc` (`PASS` / `FAIL`) in its meta from `--mtb_min_mean_depth`, `--mtb_min_breadth` and `--mtb_min_site_depth`. No sample is dropped. Reports and a LOW / PASS coverage BED are saved in `coverage/`.
 - Variant subworkflow `CALL_MTB_VARIANTS`: `bcftools mpileup` and haploid `call`, `norm`, `filter` (`QUAL >= 20`, depth at least `--mtb_min_site_depth`) and `stats` for every sample, then a SNP-only `bcftools consensus` masked with N over the fixed mask and the sample's low-coverage sites. A local module `MERGE_MASK_BED` builds the per-sample mask. VCFs are saved in `variants/` and consensus sequences in `consensus/`.
-- `--kraken2db` is now required. The pipeline stops early unless `--mtb_tbdb`, or both `--mtb_reference` and `--mtb_mask_bed`, are given.
+- Drug resistance subworkflow `PROFILE_DRUG_RESISTANCE` with a local `TBPROFILER_PROFILE` module (TB-Profiler 6.7.0, adapted from the nf-core 3.0.8 module) that reads the frozen tbdb given by `--mtb_tbdb`. Results are saved in `tbprofiler/`.
+- `--mtb_tbdb` is now required. `--mtb_tbdb_name` is removed: the database name is the name of the tbdb directory.
+- `test` profile uses the frozen tbdb archive from biowei/tbwgs-test-datasets instead of the raw tbdb reference and mask.
+- `--kraken2db` is now required.
 
 ### `Fixed`
 
 ### `Dependencies`
 
-| Dependency | New version |
-| ---------- | ----------- |
-| `bcftools` | 1.23.1      |
-| `bwa`      | 0.7.19      |
-| `fastp`    | 1.4.0       |
-| `kraken2`  | 2.1.6       |
-| `mosdepth` | 0.3.14      |
-| `samtools` | 1.24        |
+| Dependency    | New version |
+| ------------- | ----------- |
+| `bcftools`    | 1.23.1      |
+| `bwa`         | 0.7.19      |
+| `fastp`       | 1.4.0       |
+| `kraken2`     | 2.1.6       |
+| `mosdepth`    | 0.3.14      |
+| `samtools`    | 1.24        |
+| `tb-profiler` | 6.7.0       |
 
 ### `Deprecated`

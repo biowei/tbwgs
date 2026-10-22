@@ -9,6 +9,7 @@ include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_refer
 include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37rv'
 include { CHECK_MAPPING_COVERAGE } from '../subworkflows/local/check_mapping_coverage'
 include { CALL_MTB_VARIANTS      } from '../subworkflows/local/call_mtb_variants'
+include { PROFILE_DRUG_RESISTANCE } from '../subworkflows/local/profile_drug_resistance'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -78,6 +79,11 @@ workflow TBWGS {
         PREPARE_MTB_REFERENCE.out.mask
     )
     ch_multiqc_files = ch_multiqc_files.mix(CALL_MTB_VARIANTS.out.multiqc_files)
+
+    //
+    // SUBWORKFLOW: M4 - TB-Profiler drug resistance and lineage, in parallel with M1-M3
+    //
+    PROFILE_DRUG_RESISTANCE(PREPROCESS_READS.out.reads, PREPARE_MTB_REFERENCE.out.tbdb)
 
     //
     // Collate and save software versions

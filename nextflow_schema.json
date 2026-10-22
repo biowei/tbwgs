@@ -54,14 +54,8 @@
                     "format": "path",
                     "exists": true,
                     "description": "Frozen tbdb archive (who_v2+ @ c4167762), as a .tar.gz or an extracted directory.",
-                    "help_text": "Build once with `tb-profiler update_tbdb --branch who_v2+ --commit c4167762ed361c679507e3f4ebe0cd277eae6102`, archive it and record its sha256. The pipeline takes `genome.fasta` and `mask.bed` from it unless `--mtb_reference` and `--mtb_mask_bed` are both given. It becomes required when drug resistance profiling is added.",
+                    "help_text": "Build once with `tb-profiler update_tbdb --branch who_v2+ --commit c4167762ed361c679507e3f4ebe0cd277eae6102`, archive it and record its sha256. TB-Profiler reads this database for drug resistance and lineage. The pipeline also takes `genome.fasta` and `mask.bed` from it unless `--mtb_reference` or `--mtb_mask_bed` is given.",
                     "fa_icon": "fas fa-database"
-                },
-                "mtb_tbdb_name": {
-                    "type": "string",
-                    "default": "who_v2plus_c4167762",
-                    "description": "Database prefix inside the tbdb archive, passed to `tb-profiler --db`.",
-                    "fa_icon": "fas fa-tag"
                 },
                 "mtb_reference": {
                     "type": "string",
@@ -87,7 +81,7 @@
                     "fa_icon": "fas fa-database"
                 }
             },
-            "required": ["kraken2db"]
+            "required": ["mtb_tbdb", "kraken2db"]
         },
         "qc_options": {
             "title": "QC thresholds",
