@@ -10,17 +10,19 @@ include { SNP_CLUSTER } from '../../../modules/local/snp_cluster/main'
 workflow CLUSTER_BY_SNP_DISTANCE {
 
     take:
-    ch_consensus // channel: [ val(meta), path(fa) ] meta carries mtb_qc
+    ch_consensus // channel: [ val(meta), path(fa) ] meta carries mtb_qc and mtb_consensus_n
     ch_fasta     // channel: [ val(meta), path(fasta) ] value channel, H37Rv
     historical   // string: directory of historical consensus FASTA files (*.fa, *.fasta); may be null
+    max_n        // number: maximum percent N in a consensus to be clustered; may be null
 
     main:
 
     //
-    // Only PASS samples are clustered; FAIL samples stay in the report without a cluster
+    // Only PASS samples with at most max_n percent N are clustered; the rest stay in the report without a cluster
     //
     def ch_batch = ch_consensus
         .filter { meta, _fa -> meta.mtb_qc == 'PASS' }
+        .filter { meta, _fa -> max_n == null || meta.mtb_consensus_n == null || meta.mtb_consensus_n <= max_n }
         .map { meta, fa -> [ meta.id, fa ] }
 
     def ch_historical = historical

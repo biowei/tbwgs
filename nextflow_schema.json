@@ -114,10 +114,11 @@
                 },
                 "mtb_min_mtbc_fraction": {
                     "type": "number",
+                    "default": 90,
                     "minimum": 0,
                     "maximum": 100,
-                    "description": "Minimum percentage of reads classified as MTBC by Kraken2. If unset, the fraction is reported but no contamination flag is set.",
-                    "help_text": "Threshold to be set during validation.",
+                    "description": "Minimum percentage of reads classified as MTBC by Kraken2. Samples below it are flagged `LOW_MTBC` for review; they are not removed. If unset, no flag is set.",
+                    "help_text": "In the tbtamr validation set, clean isolates were 96-98% MTBC and one contaminated isolate was 75% with correct resistance calls, so the flag asks for review and does not block the result.",
                     "fa_icon": "fas fa-biohazard"
                 }
             }
@@ -134,6 +135,14 @@
                     "pattern": "^\\d+(,\\d+)*$",
                     "description": "Comma-separated SNP thresholds; one cluster column is reported per threshold.",
                     "fa_icon": "fas fa-sitemap"
+                },
+                "mtb_max_consensus_n": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Maximum percentage of N in a consensus sequence for the sample to be clustered. The fixed H37Rv mask alone is about 7%.",
+                    "fa_icon": "fas fa-filter"
                 },
                 "mtb_historical_consensus": {
                     "type": "string",

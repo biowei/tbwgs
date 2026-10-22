@@ -147,7 +147,7 @@ TB-Profiler reports a drug as susceptible when it finds no resistance mutation, 
 
 </details>
 
-Only samples with coverage QC `PASS` are clustered, together with any consensus sequences in `--mtb_historical_consensus` (file name without extension is the sample ID). All consensus sequences are on H37Rv coordinates, so they are joined into one alignment with H37Rv itself, [snp-sites](https://github.com/sanger-pathogens/snp-sites) keeps the variable columns, and [snp-dists](https://github.com/tseemann/snp-dists) counts differences between A, C, G and T only, so a masked site (N) in either sample is not counted. Clusters are single-linkage: two samples are in the same cluster when they are linked by a chain of pairs each within the threshold (5 and 12 SNPs by default). The step is skipped with `--mtb_skip_clustering`, or when fewer than two samples are available.
+Only samples with coverage QC `PASS` and at most `--mtb_max_consensus_n` percent N in the consensus (default 10%; the fixed mask alone is about 7%) are clustered, together with any consensus sequences in `--mtb_historical_consensus` (file name without extension is the sample ID). All consensus sequences are on H37Rv coordinates, so they are joined into one alignment with H37Rv itself, [snp-sites](https://github.com/sanger-pathogens/snp-sites) keeps the variable columns, and [snp-dists](https://github.com/tseemann/snp-dists) counts differences between A, C, G and T only, so a masked site (N) in either sample is not counted. Clusters are single-linkage: two samples are in the same cluster when they are linked by a chain of pairs each within the threshold (5 and 12 SNPs by default). The step is skipped with `--mtb_skip_clustering`, or when fewer than two samples are available.
 
 ### MTB summary
 
@@ -173,11 +173,12 @@ Every sample in the samplesheet has a row, including samples with coverage QC `F
 | `interim_resistance_mutations`             | mutations graded "Assoc w R - Interim"                                                                                                                                  |
 | `uncertain_mutations`                      | other mutations TB-Profiler reports in resistance genes; they do not make a drug resistant                                                                              |
 | `low_coverage_genes`                       | resistance genes with a median depth below `--mtb_min_site_depth`                                                                                                       |
+| `consensus_n_percent`                      | percent N in the consensus sequence; above `--mtb_max_consensus_n` the sample is not clustered                                                                         |
 | `cluster_<t>snp`                           | cluster ID at each threshold in `--mtb_snp_thresholds`, `-` for a sample with no other sample within the threshold, `not_clustered` for a sample that was not clustered |
 | `tbprofiler_version`, `tbdb_version`       | TB-Profiler version and tbdb name and commit                                                                                                                            |
 | `notes`                                    | missing results and why                                                                                                                                                 |
 
-A drug is `resistant` when TB-Profiler finds a mutation graded "Assoc w R" or "Assoc w R - Interim" for it. Without such a mutation, the drug is `uninterpretable` when any gene linked to it in tbdb has a median depth below `--mtb_min_site_depth`, and `not_detected` otherwise. `no_result` means TB-Profiler gave no result for the sample.
+A drug is `resistant` when TB-Profiler finds a mutation graded "Assoc w R" or "Assoc w R - Interim" for it. Without such a mutation, the drug is `uninterpretable` when a gene that carries at least one such graded mutation for the drug in tbdb (for example `rpoB` for rifampicin, `katG` and `inhA` for isoniazid) has a median depth below `--mtb_min_site_depth`, and `not_detected` otherwise. Other genes linked to the drug, such as genes with only "Uncertain significance" mutations, can appear in `low_coverage_genes` but do not make a drug `uninterpretable`. `no_result` means TB-Profiler gave no result for the sample.
 
 ### MultiQC
 

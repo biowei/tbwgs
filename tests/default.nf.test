@@ -40,6 +40,8 @@ nextflow_pipeline {
                 mtb_min_mean_depth = 0
                 mtb_min_breadth    = 0
                 mtb_min_site_depth = 1
+                // Most of each consensus is N at this depth; let it through the N filter
+                mtb_max_consensus_n = 100
             }
         }
 

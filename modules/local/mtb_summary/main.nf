@@ -31,6 +31,7 @@ process MTB_SUMMARY {
     mtb_summary.py \\
         --samples ${samples} \\
         --genes ${tbdb}/genes.bed \\
+        --mutations ${tbdb}/mutations.json \\
         ${tbprofiler} \\
         ${cluster_arg} \\
         --prefix ${prefix} \\
