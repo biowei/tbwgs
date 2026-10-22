@@ -38,9 +38,9 @@
 
 > Danecek P, Bonfield JK, Liddle J, Marshall J, Ohan V, Pollard MO, Whitwham A, Keane T, McCarthy SA, Davies RM, Li H. Twelve years of SAMtools and BCFtools. Gigascience. 2021 Feb 16;10(2):giab008. doi: 10.1093/gigascience/giab008. PubMed PMID: 33590861; PubMed Central PMCID: PMC7931819.
 
-- [TBProfiler database (tbdb)](https://github.com/jodyphelan/tbdb)
+- [TB-Profiler](https://github.com/jodyphelan/TBProfiler) and its database [tbdb](https://github.com/jodyphelan/tbdb)
 
-> The H37Rv reference (`genome.fasta`) and mask (`mask.bed`) are taken from tbdb. Phelan JE, O'Sullivan DM, Machado D, Ramos J, Oppong YEA, Campino S, O'Grady J, McNerney R, Hibberd ML, Viveiros M, Huggett JF, Clark TG. Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Med. 2019 Jun 24;11(1):41. doi: 10.1186/s13073-019-0650-x. PubMed PMID: 31234910; PubMed Central PMCID: PMC6591855.
+> TB-Profiler 6.7.0 profiles drug resistance and lineage; the H37Rv reference (`genome.fasta`) and mask (`mask.bed`) are taken from tbdb. Phelan JE, O'Sullivan DM, Machado D, Ramos J, Oppong YEA, Campino S, O'Grady J, McNerney R, Hibberd ML, Viveiros M, Huggett JF, Clark TG. Integrating informatics tools and portable sequencing technology for rapid detection of resistance to anti-tuberculous drugs. Genome Med. 2019 Jun 24;11(1):41. doi: 10.1186/s13073-019-0650-x. PubMed PMID: 31234910; PubMed Central PMCID: PMC6591855.
 
 ## Software packaging/containerisation tools
 

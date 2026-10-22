@@ -49,8 +49,8 @@ An [example samplesheet](../assets/samplesheet.csv) has been provided with the p
 
 The pipeline uses one frozen reference for the whole run.
 
-- `--mtb_tbdb`: the frozen tbdb (who_v2+ at commit `c4167762`), as a `.tar.gz` or a directory. The pipeline takes the H37Rv reference `genome.fasta` and the mask `mask.bed` from it.
-- `--mtb_reference` and `--mtb_mask_bed`: use these to give the reference FASTA and the mask BED directly. If both are given, `--mtb_tbdb` is not needed yet. It becomes required when drug resistance profiling is added.
+- `--mtb_tbdb`: the frozen tbdb (who_v2+ at commit `c4167762`), as a `.tar.gz` or a directory. It is required. TB-Profiler reads it for drug resistance and lineage, and the pipeline takes the H37Rv reference `genome.fasta` and the mask `mask.bed` from it. The archive must hold the database directory itself (the folder with `variables.json`); the test profile uses [this archive](https://github.com/biowei/tbwgs-test-datasets/tree/main/tbdb), which also shows how to build it.
+- `--mtb_reference` and `--mtb_mask_bed`: optional. Use them to replace the reference FASTA or the mask BED used for mapping and consensus. TB-Profiler always uses the reference inside `--mtb_tbdb`.
 - `--kraken2db`: a Kraken2 database, as a `.tar.gz` or a directory. It is required. The pipeline reports the percentage of reads classified as _M. tuberculosis_ complex (taxid 77643), so the database must contain that taxon.
 
 ```bash

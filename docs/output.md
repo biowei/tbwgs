@@ -19,6 +19,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Coverage](#coverage) - Depth and breadth of coverage, and the per-sample coverage QC flag
 - [Variants](#variants) - Haploid variant calls against H37Rv
 - [Consensus](#consensus) - Masked consensus sequence per sample
+- [TB-Profiler](#tb-profiler) - Drug resistance and lineage
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -117,6 +118,21 @@ A haploid caller reports one allele per site, so mixed infections and heteroresi
 </details>
 
 `bcftools consensus` applies SNPs only. Indels are left out so that all consensus sequences have the same length and can be compared position by position for SNP clustering.
+
+### TB-Profiler
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `tbprofiler/`
+  - `*.results.json`: full TB-Profiler result: lineage, drug resistance type, resistance mutations with allele frequency and WHO confidence grading, the database name and commit, and the median depth of every resistance gene (`qc.target_qc`).
+  - `*.results.txt` and `*.results.csv`: the same result as text and CSV reports.
+
+</details>
+
+[TB-Profiler](https://github.com/jodyphelan/TBProfiler) 6.7.0 runs on the trimmed reads of every sample, in parallel with mapping and variant calling, so it does not wait for the coverage QC flag. It uses its own mapping and variant calling (bwa, freebayes) against the reference in `--mtb_tbdb`, with `--no_trim` because fastp has already trimmed the reads.
+
+TB-Profiler reports a drug as susceptible when it finds no resistance mutation, even if the gene is barely covered. Use the per-gene depth in the JSON before reading a "susceptible" call: the per-sample summary table (still to be added) will mark such drugs as not interpretable.
 
 ### MultiQC
 

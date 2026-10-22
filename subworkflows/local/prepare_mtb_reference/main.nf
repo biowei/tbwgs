@@ -9,7 +9,7 @@ include { BWA_INDEX           } from '../../../modules/nf-core/bwa/index/main'
 workflow PREPARE_MTB_REFERENCE {
 
     take:
-    tbdb      // string: tbdb archive (.tar.gz) or directory; may be null when reference and mask are given
+    tbdb      // string: tbdb archive (.tar.gz) or directory
     reference // string: H37Rv FASTA; null to use genome.fasta from tbdb
     mask      // string: mask BED; null to use mask.bed from tbdb
 
@@ -18,11 +18,11 @@ workflow PREPARE_MTB_REFERENCE {
     //
     // tbdb directory, extracted once
     //
-    def ch_tbdb = channel.empty()
-    if (tbdb && (tbdb.endsWith('.tar.gz') || tbdb.endsWith('.tgz'))) {
+    def ch_tbdb
+    if (tbdb.endsWith('.tar.gz') || tbdb.endsWith('.tgz')) {
         UNTAR_TBDB(channel.of([ [ id: 'tbdb' ], file(tbdb, checkIfExists: true) ]))
         ch_tbdb = UNTAR_TBDB.out.untar.map { _meta, db -> db }.first()
-    } else if (tbdb) {
+    } else {
         ch_tbdb = channel.value(file(tbdb, checkIfExists: true))
     }
 
