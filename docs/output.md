@@ -17,6 +17,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Kraken2](#kraken2) - Read classification, used to report the fraction of reads from the _M. tuberculosis_ complex (MTBC)
 - [Alignment](#alignment) - Reads mapped to H37Rv, sorted, with duplicates marked
 - [Coverage](#coverage) - Depth and breadth of coverage, and the per-sample coverage QC flag
+- [Variants](#variants) - Haploid variant calls against H37Rv
+- [Consensus](#consensus) - Masked consensus sequence per sample
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -87,6 +89,34 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 </details>
 
 [mosdepth](https://github.com/brentp/mosdepth) measures coverage of the deduplicated BAM. Each sample is flagged `PASS` when its mean depth is at least `--mtb_min_mean_depth` (default 20×) and at least `--mtb_min_breadth` percent of the genome (default 95%) is covered at `--mtb_min_site_depth` or more (default 10×); otherwise it is flagged `FAIL`. The flag never removes a sample: `FAIL` samples still get variant calls and drug resistance results, and are only left out of SNP clustering. Both coverage reports and `samtools stats` are shown in MultiQC.
+
+### Variants
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `variants/`
+  - `*.filtered.vcf.gz` and `*.filtered.vcf.gz.tbi`: SNPs and indels that pass the filter.
+  - `*.bcftools_stats.txt`: `bcftools stats` of the filtered VCF, shown in MultiQC.
+
+</details>
+
+[BCFtools](https://samtools.github.io/bcftools/) calls variants on every sample, `PASS` or `FAIL`. `bcftools mpileup` uses base and mapping quality of at least 20, and `bcftools call` runs the multiallelic caller with `--ploidy 1`. Multiallelic sites are split and indels left-aligned with `bcftools norm`. `bcftools filter` keeps calls with `QUAL >= 20` and depth of at least `--mtb_min_site_depth`.
+
+A haploid caller reports one allele per site, so mixed infections and heteroresistance are not visible here. The drug resistance step reports allele frequencies for resistance mutations.
+
+### Consensus
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `consensus/`
+  - `*.fa`: H37Rv with the sample's SNPs applied and masked sites written as N. The sequence keeps the H37Rv length and header.
+  - `*.mask.bed`: the regions written as N, which are the fixed mask from `--mtb_tbdb` or `--mtb_mask_bed` plus the sample's sites below `--mtb_min_site_depth`.
+
+</details>
+
+`bcftools consensus` applies SNPs only. Indels are left out so that all consensus sequences have the same length and can be compared position by position for SNP clustering.
 
 ### MultiQC
 

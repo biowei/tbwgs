@@ -203,7 +203,7 @@ def toolCitationText() {
             "fastp (Chen et al. 2018),",
             "Kraken2 (Wood et al. 2019),",
             "BWA (Li and Durbin 2009),",
-            "SAMtools (Danecek et al. 2021),",
+            "SAMtools and BCFtools (Danecek et al. 2021),",
             "mosdepth (Pedersen and Quinlan 2018),",
             "MultiQC (Ewels et al. 2016)",
             "."

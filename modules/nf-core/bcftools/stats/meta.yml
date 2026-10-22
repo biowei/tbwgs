@@ -1,0 +1,154 @@
+name: bcftools_stats
+description: Generates stats from VCF files
+keywords:
+  - variant calling
+  - stats
+  - VCF
+tools:
+  - stats:
+      description: |
+        Parses VCF or BCF and produces text file stats which is suitable for
+        machine processing and can be plotted using plot-vcfstats.
+      homepage: http://samtools.github.io/bcftools/bcftools.html
+      documentation: http://www.htslib.org/doc/bcftools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence:
+        - "MIT"
+      identifier: biotools:bcftools
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - vcf:
+        type: file
+        description: VCF input file
+        pattern: "*.{vcf}"
+        ontologies: []
+    - tbi:
+        type: file
+        description: |
+          The tab index for the VCF file to be inspected. Optional: only required when parameter regions is chosen.
+        pattern: "*.tbi"
+        ontologies: []
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - regions:
+        type: file
+        description: |
+          Optionally, restrict the operation to regions listed in this file. (VCF, BED or tab-delimited)
+        ontologies: []
+  - - meta3:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - targets:
+        type: file
+        description: |
+          Optionally, restrict the operation to regions listed in this file (doesn't rely upon tbi index files)
+        ontologies: []
+  - - meta4:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - samples:
+        type: file
+        description: |
+          Optional, file of sample names to be included or excluded.
+          e.g. 'file.tsv'
+        ontologies: []
+  - - meta5:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - exons:
+        type: file
+        description: |
+          Tab-delimited file with exons for indel frameshifts (chr,beg,end; 1-based, inclusive, optionally bgzip compressed).
+          e.g. 'exons.tsv.gz'
+        ontologies: []
+  - - meta6:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - fasta:
+        type: file
+        description: |
+          Faidx indexed reference sequence file to determine INDEL context.
+          e.g. 'reference.fa'
+        ontologies: []
+output:
+  stats:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*stats.txt":
+          type: file
+          description: Text output file containing stats
+          pattern: "*_{stats.txt}"
+          ontologies: []
+  versions_bcftools:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - bcftools:
+          type: string
+          description: The tool name
+      - "bcftools --version | sed '1!d; s/^.*bcftools //'":
+          type: eval
+          description: The command used to generate the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - bcftools:
+          type: string
+          description: The tool name
+      - "bcftools --version | sed '1!d; s/^.*bcftools //'":
+          type: eval
+          description: The command used to generate the version of the tool
+authors:
+  - "@joseespinosa"
+  - "@drpatelh"
+  - "@SusiJo"
+  - "@TCLamnidis"
+maintainers:
+  - "@joseespinosa"
+  - "@drpatelh"
+  - "@SusiJo"
+  - "@TCLamnidis"
+containers:
+  docker:
+    linux/amd64:
+      name: community.wave.seqera.io/library/bcftools_htslib:1.23.1--4e7d12da6416a855
+      build_id: bd-4e7d12da6416a855_1
+      scan_id: sc-ec867ada3e6f3e30_1
+    linux/arm64:
+      name: community.wave.seqera.io/library/bcftools_htslib:1.23.1--ee50eeca823501dd
+      build_id: bd-ee50eeca823501dd_1
+      scan_id: sc-817d151a9322dc7e_1
+  singularity:
+    linux/amd64:
+      name: oras://community.wave.seqera.io/library/bcftools_htslib:1.23.1--81850d175cb7048b
+      build_id: bd-81850d175cb7048b_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/16/164b5421d87e69f8e9f5add5a937e148e8165f11bfb18159da607f56ecdb1495/data
+    linux/arm64:
+      name: oras://community.wave.seqera.io/library/bcftools_htslib:1.23.1--0e9b1d4a4e3f7742
+      build_id: bd-0e9b1d4a4e3f7742_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/cb/cb013e43f0138401d7c76269b53afb00eaae3f824be484631f811a6a7a05c895/data
+  conda:
+    linux/amd64:
+      lock_file: modules/nf-core/bcftools/stats/.conda-lock/linux_amd64-bd-4e7d12da6416a855_1.txt
+    linux/arm64:
+      lock_file: modules/nf-core/bcftools/stats/.conda-lock/linux_arm64-bd-ee50eeca823501dd_1.txt
