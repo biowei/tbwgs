@@ -44,6 +44,9 @@
                     "gzip": 1.14,
                     "mosdepth": "0.3.14"
                 },
+                "MTB_SUMMARY": {
+                    "mtb_summary.py": "1.0.0"
+                },
                 "SAMTOOLS_FAIDX": {
                     "samtools": 1.24
                 },
@@ -153,6 +156,7 @@
                 "multiqc/multiqc_data/multiqc_fastqc.txt",
                 "multiqc/multiqc_data/multiqc_general_stats.txt",
                 "multiqc/multiqc_data/multiqc_kraken.txt",
+                "multiqc/multiqc_data/multiqc_mtb_summary.txt",
                 "multiqc/multiqc_data/multiqc_samtools_stats.txt",
                 "multiqc/multiqc_data/multiqc_software_versions.txt",
                 "multiqc/multiqc_data/multiqc_sources.txt",
@@ -192,6 +196,7 @@
                 "multiqc/multiqc_plots/pdf/mosdepth-coverage-per-contig-single-cnt.pdf",
                 "multiqc/multiqc_plots/pdf/mosdepth-coverage-per-contig-single-pct.pdf",
                 "multiqc/multiqc_plots/pdf/mosdepth-cumcoverage-dist-id.pdf",
+                "multiqc/multiqc_plots/pdf/mtb_summary.pdf",
                 "multiqc/multiqc_plots/pdf/samtools-stats-dp.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-cnt.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-pct.pdf",
@@ -228,6 +233,7 @@
                 "multiqc/multiqc_plots/png/mosdepth-coverage-per-contig-single-cnt.png",
                 "multiqc/multiqc_plots/png/mosdepth-coverage-per-contig-single-pct.png",
                 "multiqc/multiqc_plots/png/mosdepth-cumcoverage-dist-id.png",
+                "multiqc/multiqc_plots/png/mtb_summary.png",
                 "multiqc/multiqc_plots/png/samtools-stats-dp.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-cnt.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-pct.png",
@@ -264,6 +270,7 @@
                 "multiqc/multiqc_plots/svg/mosdepth-coverage-per-contig-single-cnt.svg",
                 "multiqc/multiqc_plots/svg/mosdepth-coverage-per-contig-single-pct.svg",
                 "multiqc/multiqc_plots/svg/mosdepth-cumcoverage-dist-id.svg",
+                "multiqc/multiqc_plots/svg/mtb_summary.svg",
                 "multiqc/multiqc_plots/svg/samtools-stats-dp.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-cnt.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-pct.svg",
@@ -271,6 +278,8 @@
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/tbwgs_software_mqc_versions.yml",
+                "summary",
+                "summary/mtb_summary.tsv",
                 "tbprofiler",
                 "tbprofiler/TB_SIM1.results.csv",
                 "tbprofiler/TB_SIM1.results.json",
@@ -340,15 +349,17 @@
                 "multiqc_fastqc.txt:md5,1cc0b2b2ad64228e74b55dc58575f990",
                 "multiqc_general_stats.txt:md5,bfc6015351c9db4d8ee8a72c65e96ae6",
                 "multiqc_kraken.txt:md5,df8353172804e9a3bd1205f75278917c",
+                "multiqc_mtb_summary.txt:md5,ad7f01b6ce6371e040a4fd7c6f4546c9",
                 "multiqc_samtools_stats.txt:md5,4dd8e44ee63f6eef9d8769ef856d5862",
                 "samtools-stats-dp.txt:md5,7032f90e90ef003ddbf5970bf7ce4980",
                 "samtools_alignment_plot.txt:md5,57b6a30f4f39312f0b4d6cc73b69665c",
                 "samtools_insert_size.txt:md5,ea2a07ebb6770fbd720c71cf6f19f9a4",
+                "mtb_summary.tsv:md5,ee9b9a703af982e6be8cceecafb1cb6c",
                 "TB_SIM1.bcftools_stats.txt:md5,a0b1b4a00016d52ea77e03a641eb8ac4",
                 "TB_SIM2.bcftools_stats.txt:md5,a6c186ae9652022797158fabd9e4fbbe"
             ]
         ],
-        "timestamp": "2026-10-22T03:21:09.335817914",
+        "timestamp": "2026-10-22T04:34:15.615625682",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -401,6 +412,9 @@
                 "MOSDEPTH": {
                     "gzip": 1.14,
                     "mosdepth": "0.3.14"
+                },
+                "MTB_SUMMARY": {
+                    "mtb_summary.py": "1.0.0"
                 },
                 "SAMTOOLS_FAIDX": {
                     "samtools": 1.24
@@ -529,6 +543,7 @@
                 "multiqc/multiqc_data/multiqc_fastqc.txt",
                 "multiqc/multiqc_data/multiqc_general_stats.txt",
                 "multiqc/multiqc_data/multiqc_kraken.txt",
+                "multiqc/multiqc_data/multiqc_mtb_summary.txt",
                 "multiqc/multiqc_data/multiqc_samtools_stats.txt",
                 "multiqc/multiqc_data/multiqc_software_versions.txt",
                 "multiqc/multiqc_data/multiqc_sources.txt",
@@ -575,6 +590,7 @@
                 "multiqc/multiqc_plots/pdf/mosdepth-coverage-per-contig-single-cnt.pdf",
                 "multiqc/multiqc_plots/pdf/mosdepth-coverage-per-contig-single-pct.pdf",
                 "multiqc/multiqc_plots/pdf/mosdepth-cumcoverage-dist-id.pdf",
+                "multiqc/multiqc_plots/pdf/mtb_summary.pdf",
                 "multiqc/multiqc_plots/pdf/samtools-stats-dp.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-cnt.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-pct.pdf",
@@ -618,6 +634,7 @@
                 "multiqc/multiqc_plots/png/mosdepth-coverage-per-contig-single-cnt.png",
                 "multiqc/multiqc_plots/png/mosdepth-coverage-per-contig-single-pct.png",
                 "multiqc/multiqc_plots/png/mosdepth-cumcoverage-dist-id.png",
+                "multiqc/multiqc_plots/png/mtb_summary.png",
                 "multiqc/multiqc_plots/png/samtools-stats-dp.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-cnt.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-pct.png",
@@ -661,6 +678,7 @@
                 "multiqc/multiqc_plots/svg/mosdepth-coverage-per-contig-single-cnt.svg",
                 "multiqc/multiqc_plots/svg/mosdepth-coverage-per-contig-single-pct.svg",
                 "multiqc/multiqc_plots/svg/mosdepth-cumcoverage-dist-id.svg",
+                "multiqc/multiqc_plots/svg/mtb_summary.svg",
                 "multiqc/multiqc_plots/svg/samtools-stats-dp.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-cnt.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-pct.svg",
@@ -668,6 +686,8 @@
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/tbwgs_software_mqc_versions.yml",
+                "summary",
+                "summary/mtb_summary.tsv",
                 "tbprofiler",
                 "tbprofiler/TB_SIM1.results.csv",
                 "tbprofiler/TB_SIM1.results.json",
@@ -745,15 +765,17 @@
                 "multiqc_fastqc.txt:md5,1cc0b2b2ad64228e74b55dc58575f990",
                 "multiqc_general_stats.txt:md5,3dea92066536e77378f4cf37434210f4",
                 "multiqc_kraken.txt:md5,df8353172804e9a3bd1205f75278917c",
+                "multiqc_mtb_summary.txt:md5,209ab57af53acb5541c39280e85d7a0e",
                 "multiqc_samtools_stats.txt:md5,4dd8e44ee63f6eef9d8769ef856d5862",
                 "samtools-stats-dp.txt:md5,7032f90e90ef003ddbf5970bf7ce4980",
                 "samtools_alignment_plot.txt:md5,57b6a30f4f39312f0b4d6cc73b69665c",
                 "samtools_insert_size.txt:md5,ea2a07ebb6770fbd720c71cf6f19f9a4",
+                "mtb_summary.tsv:md5,0364d5ae190b643bbbec3904ed0a2d25",
                 "TB_SIM1.bcftools_stats.txt:md5,5c5c6da8055060a1e0b789b455bb07ac",
                 "TB_SIM2.bcftools_stats.txt:md5,8d812c7548a3b5df0bbbeebf21cd4576"
             ]
         ],
-        "timestamp": "2026-10-22T04:21:51.744164043",
+        "timestamp": "2026-10-22T04:36:03.477302628",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
