@@ -77,8 +77,14 @@ The tbdb archive sha256 is `28da4bcd3f0af7f7db6bce62885b50c441289e4240c5d43f008d
 > Release 1.0.0 has passed a functional check only. It is not validated for clinical or public health reporting.
 
 - The nf-test tests use simulated H37Rv reads. They show that every step runs.
-- The default QC thresholds were set from a run on 8 public CRyPTIC isolates (see [biowei/tbtamr-validation](https://github.com/biowei/tbtamr-validation)). For rifampicin, isoniazid and ethambutol, 23 of 24 calls agreed with the phenotype. The one difference is the borderline `rpoB` p.His445Leu mutation.
+- The default QC thresholds were set from a run on 8 public CRyPTIC isolates (see [biowei/tbtamr-validation](https://github.com/biowei/tbtamr-validation)). On those isolates, tbwgs was also compared with [tbtAMR](https://github.com/MDU-PHL/tbtamr):
+  - **119 of 120** sample × drug calls agreed with tbtamr. Every resistant call agreed, and so did its mutation. The one difference is linezolid in ERR4813225. tbwgs calls it `uninterpretable` because the `rrl` gene has a median depth of 7×.
+  - **23 of 24** calls agreed with the phenotype for rifampicin, isoniazid and ethambutol, for both tools. The one difference is the borderline `rpoB` p.His445Leu mutation.
+  - The full method, data and scripts are in [docs/validation/tbtamr_comparison.md](docs/validation/tbtamr_comparison.md).
+
 - 8 isolates are not enough for a formal laboratory validation. Before you use the pipeline for reporting, validate it in your laboratory: use more samples with phenotypes, include local samples, run it on your own compute and write a validation report.
+
+![tbwgs vs tbtamr on 8 CRyPTIC isolates](docs/validation/tbtamr_comparison/tbwgs_vs_tbtamr.png)
 
 ## Credits
 
