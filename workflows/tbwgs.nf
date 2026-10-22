@@ -6,6 +6,7 @@
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { PREPROCESS_READS       } from '../subworkflows/local/preprocess_reads'
 include { PREPARE_MTB_REFERENCE  } from '../subworkflows/local/prepare_mtb_reference'
+include { MAP_READS_TO_H37RV     } from '../subworkflows/local/map_reads_to_h37rv'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -40,6 +41,16 @@ workflow TBWGS {
     // SUBWORKFLOW: M0 - frozen reference, BWA index, mask and tbdb
     //
     PREPARE_MTB_REFERENCE(params.mtb_tbdb, params.mtb_reference, params.mtb_mask_bed)
+
+    //
+    // SUBWORKFLOW: M1 - map to H37Rv, mark duplicates and index
+    //
+    MAP_READS_TO_H37RV(
+        PREPROCESS_READS.out.reads,
+        PREPARE_MTB_REFERENCE.out.index,
+        PREPARE_MTB_REFERENCE.out.fasta,
+        PREPARE_MTB_REFERENCE.out.fai
+    )
 
     //
     // Collate and save software versions

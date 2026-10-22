@@ -14,6 +14,7 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 - `test` profile uses reads simulated from H37Rv, hosted in [biowei/tbwgs-test-datasets](https://github.com/biowei/tbwgs-test-datasets).
 - Read preprocessing subworkflow `PREPROCESS_READS`: lane merging (`cat`), FastQC, fastp and Kraken2, with the percentage of MTBC reads per sample.
 - Reference subworkflow `PREPARE_MTB_REFERENCE`: H37Rv FASTA and mask from the frozen tbdb (or `--mtb_reference` and `--mtb_mask_bed`), samtools faidx and BWA index.
+- Mapping subworkflow `MAP_READS_TO_H37RV`: BWA-MEM with a read group per sample, `samtools` collate, fixmate, sort and markdup in one step, and a BAM index. BAMs are saved in `alignment/`.
 - `--kraken2db` is now required. The pipeline stops early unless `--mtb_tbdb`, or both `--mtb_reference` and `--mtb_mask_bed`, are given.
 
 ### `Fixed`
