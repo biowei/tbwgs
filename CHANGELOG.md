@@ -3,9 +3,9 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v0.1.0dev - [unreleased<!-- TODO nf-core: replace with date on release -->]
+## v1.0.0 - [2026-10-22]
 
-Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) template.
+Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) template. It is tested with TB-Profiler 6.7.0 and tbdb `who_v2+` at commit `c4167762`. This release has passed a functional check, not a formal laboratory validation (see the README).
 
 ### `Added`
 
@@ -23,6 +23,11 @@ Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) t
 - `--mtb_tbdb` is now required. `--mtb_tbdb_name` is removed: the database name is the name of the tbdb directory.
 - `test` profile uses the frozen tbdb archive from biowei/tbwgs-test-datasets instead of the raw tbdb reference and mask.
 - `--kraken2db` is now required.
+- Thresholds set from a run on 8 public CRyPTIC isolates ([biowei/tbtamr-validation](https://github.com/biowei/tbtamr-validation)):
+  - A drug is `uninterpretable` only when a low-coverage gene has a mutation graded "Assoc w R" or "Assoc w R - Interim" for that drug in tbdb. `low_coverage_genes` still lists every resistance gene with low coverage.
+  - `--mtb_min_mtbc_fraction` defaults to 90. It only flags samples.
+  - New `--mtb_max_consensus_n` (default 10): consensus sequences with a higher percentage of N are not clustered. The summary has a new `consensus_n_percent` column.
+- README: frozen tool and database versions, samplesheet format and validation status.
 
 ### `Fixed`
 
