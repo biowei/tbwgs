@@ -3,6 +3,7 @@ repository_type: pipeline
 nf_core_version: 4.1.0
 
 lint:
+  included_configs: false
   files_unchanged:
     - docs/CONTRIBUTING.md
     - .prettierignore
