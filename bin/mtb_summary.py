@@ -7,7 +7,9 @@ produced a result for it. For each drug the call is:
   resistant         a mutation graded "Assoc w R" or "Assoc w R - Interim"
   not_detected      no such mutation, and every gene for the drug is covered
   uninterpretable   no such mutation, but a gene for the drug has a median
-                    depth below --min-site-depth
+                    depth below --min-site-depth. With --mutations, only genes
+                    that carry a mutation graded "Assoc w R" or "Assoc w R -
+                    Interim" for the drug are checked
   no_result         TB-Profiler gave no result for the sample
 
 Mutations graded "Uncertain significance", or not in the catalogue, never make
@@ -19,7 +21,7 @@ import csv
 import json
 import sys
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 # First-line drugs first, then the rest of the WHO groups; drugs in the database but not here follow alphabetically
 DRUG_ORDER = [
@@ -47,6 +49,33 @@ def read_genes(path):
     return drugs, drug_genes
 
 
+def read_resistance_genes(path):
+    """Drug -> locus tags with at least one mutation graded resistant, from the tbdb mutations.json."""
+    with open(path) as handle:
+        mutations = json.load(handle)
+    resistance_genes = {}
+    for gene, gene_mutations in mutations.items():
+        for mutation in gene_mutations.values():
+            for annotation in mutation.get("annotations", []):
+                if annotation.get("type") == "drug_resistance" and annotation.get("confidence") in RESISTANT:
+                    resistance_genes.setdefault(annotation["drug"], set()).add(gene)
+    return resistance_genes
+
+
+def restrict_genes(drug_genes, resistance_genes, genes_bed):
+    """For each drug, the genes (locus tag and name) in resistance_genes; these decide uninterpretable."""
+    names = {}
+    with open(genes_bed) as handle:
+        for line in handle:
+            cols = line.rstrip("\n").split("\t")
+            if len(cols) >= 5 and not cols[0].startswith("#"):
+                names[cols[3]] = [g for g in (cols[3], cols[4]) if g]
+    return {
+        drug: [g for locus in sorted(resistance_genes.get(drug, ())) for g in names.get(locus, [locus])]
+        for drug in drug_genes
+    }
+
+
 def read_tsv(path):
     with open(path, newline="") as handle:
         return list(csv.DictReader(handle, delimiter="\t"))
@@ -57,7 +86,7 @@ def mutation_label(variant, drug):
     return f"{drug}: {variant.get('gene_name') or variant.get('locus_tag', '')} {change} ({variant.get('freq', 0):.2f})"
 
 
-def profile(result, drugs, drug_genes, min_site_depth):
+def profile(result, drugs, drug_genes, check_genes, min_site_depth):
     depth = {t["target"]: t["median_depth"] for t in result.get("qc", {}).get("target_qc", [])}
     resistant = {}
     graded = {"Assoc w R": [], "Assoc w R - Interim": [], "other": []}
@@ -77,7 +106,7 @@ def profile(result, drugs, drug_genes, min_site_depth):
         low_genes.update(low)
         if resistant.get(drug):
             calls[drug] = "resistant"
-        elif low:
+        elif any(g in check_genes[drug] for g in low):
             calls[drug] = "uninterpretable"
         else:
             calls[drug] = "not_detected"
@@ -102,17 +131,22 @@ def profile(result, drugs, drug_genes, min_site_depth):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--version", action="version", version=__version__)
-    parser.add_argument("--samples", required=True, help="TSV: sample, mtbc_fraction, mean_depth, breadth, coverage_qc")
+    parser.add_argument("--samples", required=True, help="TSV: sample, mtbc_fraction, mean_depth, breadth, coverage_qc[, consensus_n]")
     parser.add_argument("--genes", required=True, help="tbdb genes.bed")
     parser.add_argument("--tbprofiler", nargs="*", default=[], help="TB-Profiler results.json files")
     parser.add_argument("--clusters", help="clusters TSV from snp_cluster.py")
     parser.add_argument("--thresholds", default="5,12", help="comma-separated SNP thresholds")
     parser.add_argument("--min-site-depth", type=float, default=10)
     parser.add_argument("--min-mtbc-fraction", type=float, help="percent; no flag is set when left out")
+    parser.add_argument("--mutations", help="tbdb mutations.json; limits the coverage check to genes with resistance mutations")
+    parser.add_argument("--max-consensus-n", type=float, help="percent; explains why a PASS sample was not clustered")
     parser.add_argument("--prefix", default="mtb_summary")
     args = parser.parse_args()
 
     drugs, drug_genes = read_genes(args.genes)
+    check_genes = drug_genes
+    if args.mutations:
+        check_genes = restrict_genes(drug_genes, read_resistance_genes(args.mutations), args.genes)
     results = {}
     for path in args.tbprofiler:
         with open(path) as handle:
@@ -122,7 +156,7 @@ def main():
     cluster_columns = [f"cluster_{t.strip()}snp" for t in args.thresholds.split(",") if t.strip()]
 
     columns = (
-        ["sample", "mtbc_fraction", "mtbc_flag", "mean_depth", "breadth", "coverage_qc",
+        ["sample", "mtbc_fraction", "mtbc_flag", "mean_depth", "breadth", "coverage_qc", "consensus_n_percent",
          "lineage", "main_lineage", "mixed_lineage", "drtype"]
         + drugs
         + ["resistance_mutations", "interim_resistance_mutations", "uncertain_mutations", "low_coverage_genes"]
@@ -136,6 +170,7 @@ def main():
         notes = []
         row = {column: "" for column in columns}
         row.update({k: sample.get(k, "") for k in ("sample", "mtbc_fraction", "mean_depth", "breadth", "coverage_qc")})
+        row["consensus_n_percent"] = sample.get("consensus_n", "")
         if not row["coverage_qc"]:
             row["coverage_qc"] = "no_result"
             notes.append("no coverage result")
@@ -145,7 +180,7 @@ def main():
             row["mtbc_flag"] = "PASS" if float(row["mtbc_fraction"]) >= args.min_mtbc_fraction else "LOW_MTBC"
 
         if sid in results:
-            row.update(profile(results[sid], drugs, drug_genes, args.min_site_depth))
+            row.update(profile(results[sid], drugs, drug_genes, check_genes, args.min_site_depth))
         else:
             row.update({drug: "no_result" for drug in drugs})
             notes.append("no TB-Profiler result")
@@ -154,7 +189,14 @@ def main():
             row.update({c: clusters[sid].get(c, "") for c in cluster_columns})
         else:
             row.update({c: "not_clustered" for c in cluster_columns})
-            if row["coverage_qc"] == "PASS":
+            high_n = (
+                args.max_consensus_n is not None
+                and row["consensus_n_percent"] != ""
+                and float(row["consensus_n_percent"]) > args.max_consensus_n
+            )
+            if row["coverage_qc"] == "PASS" and high_n:
+                notes.append(f"not clustered: consensus N above {args.max_consensus_n:g}%")
+            elif row["coverage_qc"] == "PASS":
                 notes.append("not clustered: fewer than two sequences or clustering skipped")
             else:
                 notes.append("not clustered: coverage QC not PASS")

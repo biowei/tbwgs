@@ -82,6 +82,10 @@ workflow TBWGS {
     )
     ch_multiqc_files = ch_multiqc_files.mix(CALL_MTB_VARIANTS.out.multiqc_files)
 
+    // Percent N in each consensus, for the clustering filter and the summary
+    def ch_consensus = CALL_MTB_VARIANTS.out.consensus
+        .map { meta, fa -> [ meta + [ mtb_consensus_n: consensusNPercent(fa) ], fa ] }
+
     //
     // SUBWORKFLOW: M4 - TB-Profiler drug resistance and lineage, in parallel with M1-M3
     //
@@ -93,9 +97,10 @@ workflow TBWGS {
     def ch_clusters = channel.empty()
     if (!params.mtb_skip_clustering) {
         CLUSTER_BY_SNP_DISTANCE(
-            CALL_MTB_VARIANTS.out.consensus,
+            ch_consensus,
             PREPARE_MTB_REFERENCE.out.fasta,
-            params.mtb_historical_consensus
+            params.mtb_historical_consensus,
+            params.mtb_max_consensus_n
         )
         ch_clusters = CLUSTER_BY_SNP_DISTANCE.out.clusters
     }
@@ -106,6 +111,7 @@ workflow TBWGS {
     SUMMARISE_MTB_RESULTS(
         PREPROCESS_READS.out.mtbc_fraction,
         CHECK_MAPPING_COVERAGE.out.bam,
+        ch_consensus.map { meta, _fa -> [ meta, meta.mtb_consensus_n ] },
         PROFILE_DRUG_RESISTANCE.out.json,
         ch_clusters,
         PREPARE_MTB_REFERENCE.out.tbdb
@@ -176,3 +182,18 @@ workflow TBWGS {
     THE END
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+
+//
+// Percent of N (or n) in a consensus FASTA, sequence lines only
+//
+def consensusNPercent(fasta) {
+    def total = 0L
+    def n     = 0L
+    fasta.eachLine { line ->
+        if (!line.startsWith('>')) {
+            total += line.length()
+            n     += line.count('N') + line.count('n')
+        }
+    }
+    return total ? 100.0 * n / total : 100.0
+}
