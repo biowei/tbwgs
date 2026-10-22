@@ -421,7 +421,7 @@
                     "snpsites": "2.5.1"
                 },
                 "SNP_CLUSTER": {
-                    "python": "3.10.22"
+                    "snp_cluster.py": "1.0.0"
                 },
                 "TBPROFILER_PROFILE": {
                     "tb-profiler": "6.7.0"
@@ -753,7 +753,7 @@
                 "TB_SIM2.bcftools_stats.txt:md5,8d812c7548a3b5df0bbbeebf21cd4576"
             ]
         ],
-        "timestamp": "2026-10-22T04:11:12.58962449",
+        "timestamp": "2026-10-22T04:21:51.744164043",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

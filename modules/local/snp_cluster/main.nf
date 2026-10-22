@@ -13,7 +13,7 @@ process SNP_CLUSTER {
 
     output:
     tuple val(meta), path("*.clusters.tsv"), emit: tsv
-    tuple val("${task.process}"), val('python'), eval("python3 --version | sed 's/Python //'"), emit: versions_python, topic: versions
+    tuple val("${task.process}"), val('snp_cluster.py'), eval("snp_cluster.py --version"), emit: versions_snp_cluster, topic: versions
 
     when:
     task.ext.when == null || task.ext.when

@@ -10,6 +10,8 @@ import argparse
 import csv
 import sys
 
+__version__ = "1.0.0"
+
 
 def read_matrix(path, exclude):
     with open(path, newline="") as handle:
@@ -51,6 +53,7 @@ def clusters_at(names, dists, threshold):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("matrix", help="snp-dists TSV")
     parser.add_argument("output", help="clusters TSV")
     parser.add_argument("--thresholds", default="5,12", help="comma-separated SNP thresholds")
