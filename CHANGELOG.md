@@ -3,6 +3,18 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.1.0dev - [unreleased]
+
+### `Added`
+
+- Sample set for a formal validation run: 51 CRyPTIC isolates with samplesheets, a phenotype truth table and expected QC and cluster results ([docs/validation/formal_validation_set.md](docs/validation/formal_validation_set.md)).
+
+### `Fixed`
+
+### `Dependencies`
+
+### `Deprecated`
+
 ## v1.0.0 - [2026-10-22]
 
 Initial release of biowei/tbwgs, created with the [nf-core](https://nf-co.re/) template. It is tested with TB-Profiler 6.7.0 and tbdb `who_v2+` at commit `c4167762`. This release has passed a functional check, not a formal laboratory validation (see the README).
