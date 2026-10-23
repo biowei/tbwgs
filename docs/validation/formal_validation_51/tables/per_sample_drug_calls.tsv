@@ -1,0 +1,613 @@
+sample	stratum	drug	phenotype	mic	tbwgs_call	outcome
+ERR2510311	MDR_FQ_R	rifampicin	R	>4	resistant	TP
+ERR2510311	MDR_FQ_R	isoniazid	R	>1.6	resistant	TP
+ERR2510311	MDR_FQ_R	ethambutol	R	>8	resistant	TP
+ERR2510311	MDR_FQ_R	levofloxacin	R	>8	not_detected	FN
+ERR2510311	MDR_FQ_R	moxifloxacin		0.25	not_detected	no_phenotype
+ERR2510311	MDR_FQ_R	ethionamide		1.0	not_detected	no_phenotype
+ERR2510311	MDR_FQ_R	kanamycin	S	4.0	not_detected	TN
+ERR2510311	MDR_FQ_R	amikacin	R	>8	not_detected	FN
+ERR2510311	MDR_FQ_R	delamanid		<=0.015	not_detected	no_phenotype
+ERR2510311	MDR_FQ_R	linezolid	R	>2	not_detected	FN
+ERR2510311	MDR_FQ_R	bedaquiline		0.06	not_detected	no_phenotype
+ERR2510311	MDR_FQ_R	clofazimine	R	>4	not_detected	FN
+ERR2510359	pan_susceptible	rifampicin	S	<=0.06	not_detected	TN
+ERR2510359	pan_susceptible	isoniazid	S	<=0.025	not_detected	TN
+ERR2510359	pan_susceptible	ethambutol	S	0.5	not_detected	TN
+ERR2510359	pan_susceptible	levofloxacin	S	0.25	not_detected	TN
+ERR2510359	pan_susceptible	moxifloxacin	S	<=0.06	not_detected	TN
+ERR2510359	pan_susceptible	ethionamide	S	1.0	not_detected	TN
+ERR2510359	pan_susceptible	kanamycin		2.0	not_detected	no_phenotype
+ERR2510359	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR2510359	pan_susceptible	delamanid	S	<=0.015	not_detected	TN
+ERR2510359	pan_susceptible	linezolid	S	0.25	not_detected	TN
+ERR2510359	pan_susceptible	bedaquiline		0.06	not_detected	no_phenotype
+ERR2510359	pan_susceptible	clofazimine	S	<=0.06	not_detected	TN
+ERR2510395	low_coverage	rifampicin	R	>4	resistant	qc_fail
+ERR2510395	low_coverage	isoniazid	R	>1.6	resistant	qc_fail
+ERR2510395	low_coverage	ethambutol	S	2.0	resistant	qc_fail
+ERR2510395	low_coverage	levofloxacin	R	2.0	resistant	qc_fail
+ERR2510395	low_coverage	moxifloxacin		0.5	resistant	qc_fail
+ERR2510395	low_coverage	ethionamide	S	2.0	not_detected	qc_fail
+ERR2510395	low_coverage	kanamycin	S	2.0	not_detected	qc_fail
+ERR2510395	low_coverage	amikacin	S	0.5	not_detected	qc_fail
+ERR2510395	low_coverage	delamanid	S	<=0.015	not_detected	qc_fail
+ERR2510395	low_coverage	linezolid	S	0.25	uninterpretable	qc_fail
+ERR2510395	low_coverage	bedaquiline	S	0.03	not_detected	qc_fail
+ERR2510395	low_coverage	clofazimine	S	0.12	not_detected	qc_fail
+ERR2510447	INH_mono	rifampicin	S	0.5	resistant	FP
+ERR2510447	INH_mono	isoniazid	R	>1.6	resistant	TP
+ERR2510447	INH_mono	ethambutol	S	1.0	not_detected	TN
+ERR2510447	INH_mono	levofloxacin	S	0.25	not_detected	TN
+ERR2510447	INH_mono	moxifloxacin	S	<=0.06	not_detected	TN
+ERR2510447	INH_mono	ethionamide	R	>8	resistant	TP
+ERR2510447	INH_mono	kanamycin	S	2.0	not_detected	TN
+ERR2510447	INH_mono	amikacin	S	0.5	not_detected	TN
+ERR2510447	INH_mono	delamanid	S	<=0.015	not_detected	TN
+ERR2510447	INH_mono	linezolid	S	0.5	not_detected	TN
+ERR2510447	INH_mono	bedaquiline	S	0.06	not_detected	TN
+ERR2510447	INH_mono	clofazimine		0.12	not_detected	no_phenotype
+ERR2510541	low_coverage	rifampicin	R	>4	resistant	qc_fail
+ERR2510541	low_coverage	isoniazid	R	>1.6	not_detected	qc_fail
+ERR2510541	low_coverage	ethambutol	S	1.0	not_detected	qc_fail
+ERR2510541	low_coverage	levofloxacin	R	4.0	resistant	qc_fail
+ERR2510541	low_coverage	moxifloxacin		2.0	resistant	qc_fail
+ERR2510541	low_coverage	ethionamide	S	1.0	not_detected	qc_fail
+ERR2510541	low_coverage	kanamycin	S	<=1	not_detected	qc_fail
+ERR2510541	low_coverage	amikacin	S	<=0.25	not_detected	qc_fail
+ERR2510541	low_coverage	delamanid	S	<=0.015	not_detected	qc_fail
+ERR2510541	low_coverage	linezolid	S	0.25	not_detected	qc_fail
+ERR2510541	low_coverage	bedaquiline	S	0.06	not_detected	qc_fail
+ERR2510541	low_coverage	clofazimine	S	<=0.06	not_detected	qc_fail
+ERR2510873	LZD_R	rifampicin	R	>4	resistant	TP
+ERR2510873	LZD_R	isoniazid	R	>1.6	resistant	TP
+ERR2510873	LZD_R	ethambutol	R	8.0	resistant	TP
+ERR2510873	LZD_R	levofloxacin		4.0	resistant	no_phenotype
+ERR2510873	LZD_R	moxifloxacin	R	2.0	resistant	TP
+ERR2510873	LZD_R	ethionamide	S	2.0	not_detected	TN
+ERR2510873	LZD_R	kanamycin	S	<=1	not_detected	TN
+ERR2510873	LZD_R	amikacin			not_detected	no_phenotype
+ERR2510873	LZD_R	delamanid			not_detected	no_phenotype
+ERR2510873	LZD_R	linezolid	R	>2	not_detected	FN
+ERR2510873	LZD_R	bedaquiline	S	0.03	not_detected	TN
+ERR2510873	LZD_R	clofazimine		<=0.06	not_detected	no_phenotype
+ERR3287321	MDR_FQ_S	rifampicin	R	>4	resistant	TP
+ERR3287321	MDR_FQ_S	isoniazid	R	1.6	resistant	TP
+ERR3287321	MDR_FQ_S	ethambutol	R	>8	resistant	TP
+ERR3287321	MDR_FQ_S	levofloxacin	S	0.5	not_detected	TN
+ERR3287321	MDR_FQ_S	moxifloxacin	S	0.25	not_detected	TN
+ERR3287321	MDR_FQ_S	ethionamide	S	0.5	not_detected	TN
+ERR3287321	MDR_FQ_S	kanamycin	S	2.0	not_detected	TN
+ERR3287321	MDR_FQ_S	amikacin	S	<=0.25	not_detected	TN
+ERR3287321	MDR_FQ_S	delamanid	S	<=0.015	not_detected	TN
+ERR3287321	MDR_FQ_S	linezolid	S	0.5	not_detected	TN
+ERR3287321	MDR_FQ_S	bedaquiline	S	<=0.015	not_detected	TN
+ERR3287321	MDR_FQ_S	clofazimine	S	<=0.06	not_detected	TN
+ERR3287417	RIF_R_INH_S	rifampicin	R	>4	resistant	TP
+ERR3287417	RIF_R_INH_S	isoniazid	S	0.1	not_detected	TN
+ERR3287417	RIF_R_INH_S	ethambutol	S	2.0	not_detected	TN
+ERR3287417	RIF_R_INH_S	levofloxacin	S	0.25	not_detected	TN
+ERR3287417	RIF_R_INH_S	moxifloxacin	S	0.25	not_detected	TN
+ERR3287417	RIF_R_INH_S	ethionamide		4.0	not_detected	no_phenotype
+ERR3287417	RIF_R_INH_S	kanamycin	S	<=1	not_detected	TN
+ERR3287417	RIF_R_INH_S	amikacin	S	<=0.25	not_detected	TN
+ERR3287417	RIF_R_INH_S	delamanid	S	<=0.015	not_detected	TN
+ERR3287417	RIF_R_INH_S	linezolid		0.5	not_detected	no_phenotype
+ERR3287417	RIF_R_INH_S	bedaquiline	S	0.03	not_detected	TN
+ERR3287417	RIF_R_INH_S	clofazimine		0.12	not_detected	no_phenotype
+ERR4796484	AMI_R	rifampicin	R	>4	resistant	TP
+ERR4796484	AMI_R	isoniazid	R	>1.6	resistant	TP
+ERR4796484	AMI_R	ethambutol	R	8.0	resistant	TP
+ERR4796484	AMI_R	levofloxacin		0.5	not_detected	no_phenotype
+ERR4796484	AMI_R	moxifloxacin	S	0.5	not_detected	TN
+ERR4796484	AMI_R	ethionamide	R	8.0	resistant	TP
+ERR4796484	AMI_R	kanamycin	R	>16	resistant	TP
+ERR4796484	AMI_R	amikacin	R	>8	resistant	TP
+ERR4796484	AMI_R	delamanid	S	<=0.015	not_detected	TN
+ERR4796484	AMI_R	linezolid	S	0.25	not_detected	TN
+ERR4796484	AMI_R	bedaquiline	S	<=0.015	not_detected	TN
+ERR4796484	AMI_R	clofazimine	S	<=0.06	not_detected	TN
+ERR4796695	RIF_R_INH_S	rifampicin	R	>4	resistant	TP
+ERR4796695	RIF_R_INH_S	isoniazid	S	0.1	resistant	FP
+ERR4796695	RIF_R_INH_S	ethambutol	S	1.0	not_detected	TN
+ERR4796695	RIF_R_INH_S	levofloxacin		0.25	not_detected	no_phenotype
+ERR4796695	RIF_R_INH_S	moxifloxacin		0.12	not_detected	no_phenotype
+ERR4796695	RIF_R_INH_S	ethionamide	R	8.0	resistant	TP
+ERR4796695	RIF_R_INH_S	kanamycin	S	<=1	not_detected	TN
+ERR4796695	RIF_R_INH_S	amikacin		0.5	not_detected	no_phenotype
+ERR4796695	RIF_R_INH_S	delamanid	S	<=0.015	not_detected	TN
+ERR4796695	RIF_R_INH_S	linezolid	S	0.12	not_detected	TN
+ERR4796695	RIF_R_INH_S	bedaquiline		<=0.015	not_detected	no_phenotype
+ERR4796695	RIF_R_INH_S	clofazimine	S	<=0.06	not_detected	TN
+ERR4796724	BDQ_R	rifampicin	R	>4	resistant	TP
+ERR4796724	BDQ_R	isoniazid	R	1.6	resistant	TP
+ERR4796724	BDQ_R	ethambutol	R	8.0	resistant	TP
+ERR4796724	BDQ_R	levofloxacin	R	>8	resistant	TP
+ERR4796724	BDQ_R	moxifloxacin	R	>4	resistant	TP
+ERR4796724	BDQ_R	ethionamide		1.0	resistant	no_phenotype
+ERR4796724	BDQ_R	kanamycin			not_detected	no_phenotype
+ERR4796724	BDQ_R	amikacin			not_detected	no_phenotype
+ERR4796724	BDQ_R	delamanid	S	0.06	not_detected	TN
+ERR4796724	BDQ_R	linezolid	S	0.5	not_detected	TN
+ERR4796724	BDQ_R	bedaquiline	R	>2	not_detected	FN
+ERR4796724	BDQ_R	clofazimine			not_detected	no_phenotype
+ERR4796994	pan_susceptible	rifampicin	S	<=0.06	not_detected	TN
+ERR4796994	pan_susceptible	isoniazid	S	0.05	not_detected	TN
+ERR4796994	pan_susceptible	ethambutol	S	1.0	not_detected	TN
+ERR4796994	pan_susceptible	levofloxacin	S	0.5	not_detected	TN
+ERR4796994	pan_susceptible	moxifloxacin	S	0.12	not_detected	TN
+ERR4796994	pan_susceptible	ethionamide	S	<=0.25	not_detected	TN
+ERR4796994	pan_susceptible	kanamycin		2.0	not_detected	no_phenotype
+ERR4796994	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR4796994	pan_susceptible	delamanid	S	0.03	not_detected	TN
+ERR4796994	pan_susceptible	linezolid	S	0.5	not_detected	TN
+ERR4796994	pan_susceptible	bedaquiline	S	0.06	not_detected	TN
+ERR4796994	pan_susceptible	clofazimine		0.12	not_detected	no_phenotype
+ERR4797043	MDR_FQ_S	rifampicin	R	>4	resistant	TP
+ERR4797043	MDR_FQ_S	isoniazid	R	>1.6	resistant	TP
+ERR4797043	MDR_FQ_S	ethambutol	R	8.0	resistant	TP
+ERR4797043	MDR_FQ_S	levofloxacin	S	0.5	not_detected	TN
+ERR4797043	MDR_FQ_S	moxifloxacin	S	0.25	not_detected	TN
+ERR4797043	MDR_FQ_S	ethionamide	S	1.0	not_detected	TN
+ERR4797043	MDR_FQ_S	kanamycin	S	<=1	not_detected	TN
+ERR4797043	MDR_FQ_S	amikacin	S	<=0.25	not_detected	TN
+ERR4797043	MDR_FQ_S	delamanid	S	0.03	not_detected	TN
+ERR4797043	MDR_FQ_S	linezolid	S	0.5	not_detected	TN
+ERR4797043	MDR_FQ_S	bedaquiline	S	<=0.015	not_detected	TN
+ERR4797043	MDR_FQ_S	clofazimine		0.12	not_detected	no_phenotype
+ERR4797089	suspected_mixed	rifampicin	S	<=0.06	resistant	FP
+ERR4797089	suspected_mixed	isoniazid	S	0.05	resistant	FP
+ERR4797089	suspected_mixed	ethambutol		2.0	resistant	no_phenotype
+ERR4797089	suspected_mixed	levofloxacin		1.0	resistant	no_phenotype
+ERR4797089	suspected_mixed	moxifloxacin		0.5	resistant	no_phenotype
+ERR4797089	suspected_mixed	ethionamide		1.0	resistant	no_phenotype
+ERR4797089	suspected_mixed	kanamycin	S	4.0	not_detected	TN
+ERR4797089	suspected_mixed	amikacin	S	0.5	not_detected	TN
+ERR4797089	suspected_mixed	delamanid		0.25	not_detected	no_phenotype
+ERR4797089	suspected_mixed	linezolid	S	1.0	not_detected	TN
+ERR4797089	suspected_mixed	bedaquiline		0.06	not_detected	no_phenotype
+ERR4797089	suspected_mixed	clofazimine	S	0.12	not_detected	TN
+ERR4797178	MDR_FQ_R	rifampicin	R	>4	resistant	TP
+ERR4797178	MDR_FQ_R	isoniazid	R	>1.6	resistant	TP
+ERR4797178	MDR_FQ_R	ethambutol	R	8.0	resistant	TP
+ERR4797178	MDR_FQ_R	levofloxacin	R	>8	resistant	TP
+ERR4797178	MDR_FQ_R	moxifloxacin	R	>4	resistant	TP
+ERR4797178	MDR_FQ_R	ethionamide	R	>8	not_detected	FN
+ERR4797178	MDR_FQ_R	kanamycin		<=1	not_detected	no_phenotype
+ERR4797178	MDR_FQ_R	amikacin		<=0.25	not_detected	no_phenotype
+ERR4797178	MDR_FQ_R	delamanid	R	1.0	not_detected	FN
+ERR4797178	MDR_FQ_R	linezolid	R	>2	not_detected	FN
+ERR4797178	MDR_FQ_R	bedaquiline		0.12	not_detected	no_phenotype
+ERR4797178	MDR_FQ_R	clofazimine		0.12	not_detected	no_phenotype
+ERR4797534	pan_susceptible	rifampicin	S	0.25	not_detected	TN
+ERR4797534	pan_susceptible	isoniazid	S	0.05	not_detected	TN
+ERR4797534	pan_susceptible	ethambutol	S	1.0	not_detected	TN
+ERR4797534	pan_susceptible	levofloxacin	S	0.5	not_detected	TN
+ERR4797534	pan_susceptible	moxifloxacin	S	0.25	not_detected	TN
+ERR4797534	pan_susceptible	ethionamide	S	1.0	not_detected	TN
+ERR4797534	pan_susceptible	kanamycin	S	<=1	not_detected	TN
+ERR4797534	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR4797534	pan_susceptible	delamanid	S	0.03	not_detected	TN
+ERR4797534	pan_susceptible	linezolid	S	0.06	not_detected	TN
+ERR4797534	pan_susceptible	bedaquiline	S	0.03	not_detected	TN
+ERR4797534	pan_susceptible	clofazimine	S	0.12	not_detected	TN
+ERR4797607	MDR_FQ_R	rifampicin	R	>4	resistant	TP
+ERR4797607	MDR_FQ_R	isoniazid	R	1.6	resistant	TP
+ERR4797607	MDR_FQ_R	ethambutol	R	8.0	resistant	TP
+ERR4797607	MDR_FQ_R	levofloxacin	R	2.0	resistant	TP
+ERR4797607	MDR_FQ_R	moxifloxacin	S	0.5	resistant	FP
+ERR4797607	MDR_FQ_R	ethionamide	S	1.0	resistant	FP
+ERR4797607	MDR_FQ_R	kanamycin	S	<=1	resistant	FP
+ERR4797607	MDR_FQ_R	amikacin		<=0.25	resistant	no_phenotype
+ERR4797607	MDR_FQ_R	delamanid		0.06	not_detected	no_phenotype
+ERR4797607	MDR_FQ_R	linezolid		0.12	not_detected	no_phenotype
+ERR4797607	MDR_FQ_R	bedaquiline		<=0.015	resistant	no_phenotype
+ERR4797607	MDR_FQ_R	clofazimine		<=0.06	resistant	no_phenotype
+ERR4797645	INH_mono	rifampicin	S	<=0.06	resistant	FP
+ERR4797645	INH_mono	isoniazid	R	>1.6	resistant	TP
+ERR4797645	INH_mono	ethambutol	S	1.0	not_detected	TN
+ERR4797645	INH_mono	levofloxacin	S	1.0	not_detected	TN
+ERR4797645	INH_mono	moxifloxacin	S	0.25	not_detected	TN
+ERR4797645	INH_mono	ethionamide	R	>8	resistant	TP
+ERR4797645	INH_mono	kanamycin	S	<=1	not_detected	TN
+ERR4797645	INH_mono	amikacin	S	<=0.25	not_detected	TN
+ERR4797645	INH_mono	delamanid	S	0.03	not_detected	TN
+ERR4797645	INH_mono	linezolid	S	0.5	not_detected	TN
+ERR4797645	INH_mono	bedaquiline	S	0.12	not_detected	TN
+ERR4797645	INH_mono	clofazimine	S	0.25	not_detected	TN
+ERR4809016	MDR_FQ_S	rifampicin	R	>4	resistant	TP
+ERR4809016	MDR_FQ_S	isoniazid	R	1.6	resistant	TP
+ERR4809016	MDR_FQ_S	ethambutol	R	8.0	resistant	TP
+ERR4809016	MDR_FQ_S	levofloxacin	S	0.5	not_detected	TN
+ERR4809016	MDR_FQ_S	moxifloxacin	S	0.12	not_detected	TN
+ERR4809016	MDR_FQ_S	ethionamide	R	>8	resistant	TP
+ERR4809016	MDR_FQ_S	kanamycin	S	2.0	not_detected	TN
+ERR4809016	MDR_FQ_S	amikacin	S	<=0.25	not_detected	TN
+ERR4809016	MDR_FQ_S	delamanid		0.03	not_detected	no_phenotype
+ERR4809016	MDR_FQ_S	linezolid	S	0.25	not_detected	TN
+ERR4809016	MDR_FQ_S	bedaquiline	S	0.03	not_detected	TN
+ERR4809016	MDR_FQ_S	clofazimine	S	0.12	not_detected	TN
+ERR4809077	AMI_R	rifampicin	R	>4	resistant	TP
+ERR4809077	AMI_R	isoniazid	R	>1.6	resistant	TP
+ERR4809077	AMI_R	ethambutol	R	8.0	resistant	TP
+ERR4809077	AMI_R	levofloxacin		8.0	resistant	no_phenotype
+ERR4809077	AMI_R	moxifloxacin	R	>4	resistant	TP
+ERR4809077	AMI_R	ethionamide		4.0	resistant	no_phenotype
+ERR4809077	AMI_R	kanamycin	R	>16	resistant	TP
+ERR4809077	AMI_R	amikacin	R	>8	resistant	TP
+ERR4809077	AMI_R	delamanid			not_detected	no_phenotype
+ERR4809077	AMI_R	linezolid	R	>2	resistant	TP
+ERR4809077	AMI_R	bedaquiline		0.06	not_detected	no_phenotype
+ERR4809077	AMI_R	clofazimine		0.12	not_detected	no_phenotype
+ERR4809338	RIF_R_INH_S	rifampicin	R	>4	resistant	TP
+ERR4809338	RIF_R_INH_S	isoniazid	S	<=0.025	not_detected	TN
+ERR4809338	RIF_R_INH_S	ethambutol	S	1.0	not_detected	TN
+ERR4809338	RIF_R_INH_S	levofloxacin		0.5	not_detected	no_phenotype
+ERR4809338	RIF_R_INH_S	moxifloxacin		0.12	not_detected	no_phenotype
+ERR4809338	RIF_R_INH_S	ethionamide	S	0.5	not_detected	TN
+ERR4809338	RIF_R_INH_S	kanamycin			not_detected	no_phenotype
+ERR4809338	RIF_R_INH_S	amikacin	S	<=0.25	not_detected	TN
+ERR4809338	RIF_R_INH_S	delamanid	S	<=0.015	not_detected	TN
+ERR4809338	RIF_R_INH_S	linezolid	S	0.5	not_detected	TN
+ERR4809338	RIF_R_INH_S	bedaquiline	S	0.12	not_detected	TN
+ERR4809338	RIF_R_INH_S	clofazimine			not_detected	no_phenotype
+ERR4810510	BDQ_R	rifampicin	S	0.12	not_detected	TN
+ERR4810510	BDQ_R	isoniazid	S	<=0.025	not_detected	TN
+ERR4810510	BDQ_R	ethambutol	S	<=0.06	not_detected	TN
+ERR4810510	BDQ_R	levofloxacin		<=0.12	not_detected	no_phenotype
+ERR4810510	BDQ_R	moxifloxacin		<=0.06	not_detected	no_phenotype
+ERR4810510	BDQ_R	ethionamide		2.0	not_detected	no_phenotype
+ERR4810510	BDQ_R	kanamycin		2.0	not_detected	no_phenotype
+ERR4810510	BDQ_R	amikacin		0.5	not_detected	no_phenotype
+ERR4810510	BDQ_R	delamanid		<=0.015	not_detected	no_phenotype
+ERR4810510	BDQ_R	linezolid		1.0	not_detected	no_phenotype
+ERR4810510	BDQ_R	bedaquiline	R	0.5	not_detected	FN
+ERR4810510	BDQ_R	clofazimine	S	0.12	not_detected	TN
+ERR4811037	RIF_R_INH_S	rifampicin	R	>4	resistant	TP
+ERR4811037	RIF_R_INH_S	isoniazid	S	0.05	not_detected	TN
+ERR4811037	RIF_R_INH_S	ethambutol	S	1.0	not_detected	TN
+ERR4811037	RIF_R_INH_S	levofloxacin	S	0.25	not_detected	TN
+ERR4811037	RIF_R_INH_S	moxifloxacin		0.25	not_detected	no_phenotype
+ERR4811037	RIF_R_INH_S	ethionamide	S	2.0	not_detected	TN
+ERR4811037	RIF_R_INH_S	kanamycin	S	2.0	not_detected	TN
+ERR4811037	RIF_R_INH_S	amikacin	S	<=0.25	not_detected	TN
+ERR4811037	RIF_R_INH_S	delamanid	S	<=0.015	not_detected	TN
+ERR4811037	RIF_R_INH_S	linezolid	S	0.5	not_detected	TN
+ERR4811037	RIF_R_INH_S	bedaquiline	S	0.06	not_detected	TN
+ERR4811037	RIF_R_INH_S	clofazimine	S	0.12	not_detected	TN
+ERR4811532	MDR_FQ_S	rifampicin	R	>4	resistant	TP
+ERR4811532	MDR_FQ_S	isoniazid	R	0.2	resistant	TP
+ERR4811532	MDR_FQ_S	ethambutol	S	1.0	not_detected	TN
+ERR4811532	MDR_FQ_S	levofloxacin	S	0.25	not_detected	TN
+ERR4811532	MDR_FQ_S	moxifloxacin	S	0.12	not_detected	TN
+ERR4811532	MDR_FQ_S	ethionamide	R	8.0	resistant	TP
+ERR4811532	MDR_FQ_S	kanamycin	S	<=1	not_detected	TN
+ERR4811532	MDR_FQ_S	amikacin	S	<=0.25	not_detected	TN
+ERR4811532	MDR_FQ_S	delamanid	S	<=0.015	not_detected	TN
+ERR4811532	MDR_FQ_S	linezolid		0.12	not_detected	no_phenotype
+ERR4811532	MDR_FQ_S	bedaquiline	S	<=0.015	not_detected	TN
+ERR4811532	MDR_FQ_S	clofazimine	S	<=0.06	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	rifampicin	S	0.5	resistant	FP
+ERR4811536	overlap_rpoB_H445L	isoniazid	R	>1.6	resistant	TP
+ERR4811536	overlap_rpoB_H445L	ethambutol	R	>8	resistant	TP
+ERR4811536	overlap_rpoB_H445L	levofloxacin	R	>8	resistant	TP
+ERR4811536	overlap_rpoB_H445L	moxifloxacin		4.0	resistant	no_phenotype
+ERR4811536	overlap_rpoB_H445L	ethionamide	S	1.0	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	kanamycin	S	2.0	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	amikacin	S	<=0.25	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	delamanid	S	<=0.015	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	linezolid	S	0.25	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	bedaquiline	S	0.03	not_detected	TN
+ERR4811536	overlap_rpoB_H445L	clofazimine	S	<=0.06	not_detected	TN
+ERR4811765	pan_susceptible	rifampicin	S	<=0.03	not_detected	TN
+ERR4811765	pan_susceptible	isoniazid	S	<=0.025	not_detected	TN
+ERR4811765	pan_susceptible	ethambutol	S	2.0	not_detected	TN
+ERR4811765	pan_susceptible	levofloxacin	S	0.25	not_detected	TN
+ERR4811765	pan_susceptible	moxifloxacin	S	0.25	not_detected	TN
+ERR4811765	pan_susceptible	ethionamide	S	0.5	not_detected	TN
+ERR4811765	pan_susceptible	kanamycin	S	2.0	not_detected	TN
+ERR4811765	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR4811765	pan_susceptible	delamanid		0.015	not_detected	no_phenotype
+ERR4811765	pan_susceptible	linezolid		0.5	not_detected	no_phenotype
+ERR4811765	pan_susceptible	bedaquiline	S	0.015	not_detected	TN
+ERR4811765	pan_susceptible	clofazimine	S	<=0.03	not_detected	TN
+ERR4813777	INH_mono	rifampicin	S	<=0.03	not_detected	TN
+ERR4813777	INH_mono	isoniazid	R	3.2	resistant	TP
+ERR4813777	INH_mono	ethambutol	S	2.0	not_detected	TN
+ERR4813777	INH_mono	levofloxacin	S	0.5	not_detected	TN
+ERR4813777	INH_mono	moxifloxacin	S	0.25	not_detected	TN
+ERR4813777	INH_mono	ethionamide	S	2.0	not_detected	TN
+ERR4813777	INH_mono	kanamycin	S	<=1	not_detected	TN
+ERR4813777	INH_mono	amikacin	S	<=0.25	not_detected	TN
+ERR4813777	INH_mono	delamanid		0.015	not_detected	no_phenotype
+ERR4813777	INH_mono	linezolid	S	0.5	not_detected	TN
+ERR4813777	INH_mono	bedaquiline	S	0.015	not_detected	TN
+ERR4813777	INH_mono	clofazimine	S	0.06	not_detected	TN
+ERR4813879	MDR_FQ_R	rifampicin	R	>8	resistant	qc_fail
+ERR4813879	MDR_FQ_R	isoniazid	R	3.2	resistant	qc_fail
+ERR4813879	MDR_FQ_R	ethambutol	R	8.0	resistant	qc_fail
+ERR4813879	MDR_FQ_R	levofloxacin	R	4.0	resistant	qc_fail
+ERR4813879	MDR_FQ_R	moxifloxacin	R	2.0	resistant	qc_fail
+ERR4813879	MDR_FQ_R	ethionamide	S	1.0	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	kanamycin		4.0	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	amikacin	S	0.5	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	delamanid		0.015	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	linezolid	S	0.25	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	bedaquiline		0.06	not_detected	qc_fail
+ERR4813879	MDR_FQ_R	clofazimine	S	0.12	not_detected	qc_fail
+ERR4814117	pan_susceptible	rifampicin	S	0.12	not_detected	TN
+ERR4814117	pan_susceptible	isoniazid	S	<=0.025	not_detected	TN
+ERR4814117	pan_susceptible	ethambutol	S	1.0	not_detected	TN
+ERR4814117	pan_susceptible	levofloxacin	S	0.5	not_detected	TN
+ERR4814117	pan_susceptible	moxifloxacin	S	0.25	not_detected	TN
+ERR4814117	pan_susceptible	ethionamide	S	1.0	not_detected	TN
+ERR4814117	pan_susceptible	kanamycin	S	2.0	not_detected	TN
+ERR4814117	pan_susceptible	amikacin	S	1.0	not_detected	TN
+ERR4814117	pan_susceptible	delamanid		0.03	not_detected	no_phenotype
+ERR4814117	pan_susceptible	linezolid	S	0.25	not_detected	TN
+ERR4814117	pan_susceptible	bedaquiline	S	0.06	not_detected	TN
+ERR4814117	pan_susceptible	clofazimine	S	0.12	not_detected	TN
+ERR4828168	pan_susceptible	rifampicin	S	<=0.06	not_detected	TN
+ERR4828168	pan_susceptible	isoniazid	S	0.05	not_detected	TN
+ERR4828168	pan_susceptible	ethambutol	S	1.0	not_detected	TN
+ERR4828168	pan_susceptible	levofloxacin	S	0.5	not_detected	TN
+ERR4828168	pan_susceptible	moxifloxacin	S	0.12	not_detected	TN
+ERR4828168	pan_susceptible	ethionamide	S	2.0	not_detected	TN
+ERR4828168	pan_susceptible	kanamycin		2.0	not_detected	no_phenotype
+ERR4828168	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR4828168	pan_susceptible	delamanid	S	<=0.015	not_detected	TN
+ERR4828168	pan_susceptible	linezolid	S	0.25	not_detected	TN
+ERR4828168	pan_susceptible	bedaquiline	S	0.03	not_detected	TN
+ERR4828168	pan_susceptible	clofazimine	S	<=0.06	not_detected	TN
+ERR4828205	INH_mono	rifampicin	S	0.06	not_detected	TN
+ERR4828205	INH_mono	isoniazid	R	3.2	resistant	TP
+ERR4828205	INH_mono	ethambutol	S	1.0	not_detected	TN
+ERR4828205	INH_mono	levofloxacin	S	0.25	not_detected	TN
+ERR4828205	INH_mono	moxifloxacin	S	0.12	not_detected	TN
+ERR4828205	INH_mono	ethionamide	S	2.0	not_detected	TN
+ERR4828205	INH_mono	kanamycin	S	2.0	not_detected	TN
+ERR4828205	INH_mono	amikacin	S	0.5	not_detected	TN
+ERR4828205	INH_mono	delamanid	S	0.015	not_detected	TN
+ERR4828205	INH_mono	linezolid	S	0.5	not_detected	TN
+ERR4828205	INH_mono	bedaquiline		0.06	not_detected	no_phenotype
+ERR4828205	INH_mono	clofazimine	S	0.12	not_detected	TN
+ERR4829143	MDR_FQ_S	rifampicin	R	>8	resistant	TP
+ERR4829143	MDR_FQ_S	isoniazid	R	6.4	resistant	TP
+ERR4829143	MDR_FQ_S	ethambutol	S	2.0	resistant	FP
+ERR4829143	MDR_FQ_S	levofloxacin	S	0.25	not_detected	TN
+ERR4829143	MDR_FQ_S	moxifloxacin	S	<=0.06	not_detected	TN
+ERR4829143	MDR_FQ_S	ethionamide		1.0	not_detected	no_phenotype
+ERR4829143	MDR_FQ_S	kanamycin	S	2.0	not_detected	TN
+ERR4829143	MDR_FQ_S	amikacin		0.5	not_detected	no_phenotype
+ERR4829143	MDR_FQ_S	delamanid	S	0.015	not_detected	TN
+ERR4829143	MDR_FQ_S	linezolid		1.0	not_detected	no_phenotype
+ERR4829143	MDR_FQ_S	bedaquiline	R	0.5	not_detected	FN
+ERR4829143	MDR_FQ_S	clofazimine		0.5	not_detected	no_phenotype
+ERR4830050	pan_susceptible	rifampicin	S	<=0.03	not_detected	TN
+ERR4830050	pan_susceptible	isoniazid	S	<=0.025	not_detected	TN
+ERR4830050	pan_susceptible	ethambutol	S	0.5	not_detected	TN
+ERR4830050	pan_susceptible	levofloxacin	S	0.25	not_detected	TN
+ERR4830050	pan_susceptible	moxifloxacin	S	0.12	not_detected	TN
+ERR4830050	pan_susceptible	ethionamide	S	1.0	not_detected	TN
+ERR4830050	pan_susceptible	kanamycin	S	<=1	not_detected	TN
+ERR4830050	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR4830050	pan_susceptible	delamanid	S	0.015	not_detected	TN
+ERR4830050	pan_susceptible	linezolid	S	0.25	not_detected	TN
+ERR4830050	pan_susceptible	bedaquiline	S	0.015	not_detected	TN
+ERR4830050	pan_susceptible	clofazimine	S	0.06	not_detected	TN
+ERR4830205	LZD_R	rifampicin	S	<=0.06	not_detected	TN
+ERR4830205	LZD_R	isoniazid	S	<=0.025	not_detected	TN
+ERR4830205	LZD_R	ethambutol	S	1.0	not_detected	TN
+ERR4830205	LZD_R	levofloxacin	S	0.5	not_detected	TN
+ERR4830205	LZD_R	moxifloxacin	S	0.25	not_detected	TN
+ERR4830205	LZD_R	ethionamide	S	2.0	not_detected	TN
+ERR4830205	LZD_R	kanamycin	S	2.0	not_detected	TN
+ERR4830205	LZD_R	amikacin	S	0.5	not_detected	TN
+ERR4830205	LZD_R	delamanid	S	<=0.015	not_detected	TN
+ERR4830205	LZD_R	linezolid	R	2.0	not_detected	FN
+ERR4830205	LZD_R	bedaquiline	S	0.03	not_detected	TN
+ERR4830205	LZD_R	clofazimine	S	<=0.06	not_detected	TN
+ERR4830345	suspected_mixed	rifampicin	S	<=0.06	not_detected	TN
+ERR4830345	suspected_mixed	isoniazid	S	<=0.025	not_detected	TN
+ERR4830345	suspected_mixed	ethambutol		2.0	not_detected	no_phenotype
+ERR4830345	suspected_mixed	levofloxacin		1.0	not_detected	no_phenotype
+ERR4830345	suspected_mixed	moxifloxacin		0.5	not_detected	no_phenotype
+ERR4830345	suspected_mixed	ethionamide		8.0	not_detected	no_phenotype
+ERR4830345	suspected_mixed	kanamycin		8.0	not_detected	no_phenotype
+ERR4830345	suspected_mixed	amikacin	R	4.0	not_detected	FN
+ERR4830345	suspected_mixed	delamanid	S	0.03	not_detected	TN
+ERR4830345	suspected_mixed	linezolid	R	2.0	not_detected	FN
+ERR4830345	suspected_mixed	bedaquiline	S	<=0.015	not_detected	TN
+ERR4830345	suspected_mixed	clofazimine		0.25	not_detected	no_phenotype
+ERR4830557	pair_gt100	rifampicin		>8	resistant	no_phenotype
+ERR4830557	pair_gt100	isoniazid		>12.8	resistant	no_phenotype
+ERR4830557	pair_gt100	ethambutol		16.0	resistant	no_phenotype
+ERR4830557	pair_gt100	levofloxacin		4.0	resistant	no_phenotype
+ERR4830557	pair_gt100	moxifloxacin		0.5	resistant	no_phenotype
+ERR4830557	pair_gt100	ethionamide		>8	resistant	no_phenotype
+ERR4830557	pair_gt100	kanamycin		>16	resistant	no_phenotype
+ERR4830557	pair_gt100	amikacin		>16	resistant	no_phenotype
+ERR4830557	pair_gt100	delamanid		0.015	not_detected	no_phenotype
+ERR4830557	pair_gt100	linezolid		0.25	not_detected	no_phenotype
+ERR4830557	pair_gt100	bedaquiline		0.03	not_detected	no_phenotype
+ERR4830557	pair_gt100	clofazimine		0.06	not_detected	no_phenotype
+ERR4830565	pair_le5	rifampicin		>8	resistant	no_phenotype
+ERR4830565	pair_le5	isoniazid		3.2	resistant	no_phenotype
+ERR4830565	pair_le5	ethambutol		16.0	resistant	no_phenotype
+ERR4830565	pair_le5	levofloxacin		4.0	resistant	no_phenotype
+ERR4830565	pair_le5	moxifloxacin		2.0	resistant	no_phenotype
+ERR4830565	pair_le5	ethionamide		1.0	not_detected	no_phenotype
+ERR4830565	pair_le5	kanamycin		>16	resistant	no_phenotype
+ERR4830565	pair_le5	amikacin		>16	resistant	no_phenotype
+ERR4830565	pair_le5	delamanid		0.015	not_detected	no_phenotype
+ERR4830565	pair_le5	linezolid		0.5	not_detected	no_phenotype
+ERR4830565	pair_le5	bedaquiline		0.25	resistant	no_phenotype
+ERR4830565	pair_le5	clofazimine		0.5	resistant	no_phenotype
+ERR4830566	pair_le5	rifampicin		>8	resistant	no_phenotype
+ERR4830566	pair_le5	isoniazid		3.2	resistant	no_phenotype
+ERR4830566	pair_le5	ethambutol		16.0	resistant	no_phenotype
+ERR4830566	pair_le5	levofloxacin		4.0	resistant	no_phenotype
+ERR4830566	pair_le5	moxifloxacin		2.0	resistant	no_phenotype
+ERR4830566	pair_le5	ethionamide		1.0	not_detected	no_phenotype
+ERR4830566	pair_le5	kanamycin		>16	resistant	no_phenotype
+ERR4830566	pair_le5	amikacin		>16	resistant	no_phenotype
+ERR4830566	pair_le5	delamanid		0.015	not_detected	no_phenotype
+ERR4830566	pair_le5	linezolid		0.5	not_detected	no_phenotype
+ERR4830566	pair_le5	bedaquiline		0.06	not_detected	no_phenotype
+ERR4830566	pair_le5	clofazimine		0.12	not_detected	no_phenotype
+ERR4830567	pair_gt100	rifampicin		>8	resistant	no_phenotype
+ERR4830567	pair_gt100	isoniazid		>12.8	resistant	no_phenotype
+ERR4830567	pair_gt100	ethambutol		16.0	resistant	no_phenotype
+ERR4830567	pair_gt100	levofloxacin		2.0	resistant	no_phenotype
+ERR4830567	pair_gt100	moxifloxacin		1.0	resistant	no_phenotype
+ERR4830567	pair_gt100	ethionamide		>8	resistant	no_phenotype
+ERR4830567	pair_gt100	kanamycin		>16	resistant	no_phenotype
+ERR4830567	pair_gt100	amikacin		>16	resistant	no_phenotype
+ERR4830567	pair_gt100	delamanid		0.015	not_detected	no_phenotype
+ERR4830567	pair_gt100	linezolid		0.25	not_detected	no_phenotype
+ERR4830567	pair_gt100	bedaquiline		0.25	resistant	no_phenotype
+ERR4830567	pair_gt100	clofazimine		0.5	resistant	no_phenotype
+ERR4830637	MDR_FQ_R	rifampicin	R	>8	resistant	TP
+ERR4830637	MDR_FQ_R	isoniazid	R	3.2	resistant	TP
+ERR4830637	MDR_FQ_R	ethambutol	R	8.0	resistant	TP
+ERR4830637	MDR_FQ_R	levofloxacin	R	4.0	resistant	TP
+ERR4830637	MDR_FQ_R	moxifloxacin	R	4.0	resistant	TP
+ERR4830637	MDR_FQ_R	ethionamide	S	2.0	not_detected	TN
+ERR4830637	MDR_FQ_R	kanamycin	R	>16	resistant	TP
+ERR4830637	MDR_FQ_R	amikacin	R	>16	resistant	TP
+ERR4830637	MDR_FQ_R	delamanid	S	<=0.008	not_detected	TN
+ERR4830637	MDR_FQ_R	linezolid	S	0.25	not_detected	TN
+ERR4830637	MDR_FQ_R	bedaquiline	S	0.015	not_detected	TN
+ERR4830637	MDR_FQ_R	clofazimine		0.06	not_detected	no_phenotype
+ERR4830808	MDR_FQ_R	rifampicin	R	>8	resistant	TP
+ERR4830808	MDR_FQ_R	isoniazid	R	6.4	resistant	TP
+ERR4830808	MDR_FQ_R	ethambutol	R	8.0	resistant	TP
+ERR4830808	MDR_FQ_R	levofloxacin	R	>8	resistant	TP
+ERR4830808	MDR_FQ_R	moxifloxacin	R	>4	resistant	TP
+ERR4830808	MDR_FQ_R	ethionamide	R	>8	resistant	TP
+ERR4830808	MDR_FQ_R	kanamycin	R	>16	resistant	TP
+ERR4830808	MDR_FQ_R	amikacin	R	>16	resistant	TP
+ERR4830808	MDR_FQ_R	delamanid	S	0.03	not_detected	TN
+ERR4830808	MDR_FQ_R	linezolid	S	0.5	not_detected	TN
+ERR4830808	MDR_FQ_R	bedaquiline	S	0.03	not_detected	TN
+ERR4830808	MDR_FQ_R	clofazimine	S	<=0.03	not_detected	TN
+ERR4831404	LZD_R	rifampicin	R	>8	resistant	TP
+ERR4831404	LZD_R	isoniazid	R	6.4	resistant	TP
+ERR4831404	LZD_R	ethambutol	S	2.0	resistant	FP
+ERR4831404	LZD_R	levofloxacin	R	4.0	resistant	TP
+ERR4831404	LZD_R	moxifloxacin		4.0	resistant	no_phenotype
+ERR4831404	LZD_R	ethionamide		4.0	resistant	no_phenotype
+ERR4831404	LZD_R	kanamycin	R	>16	resistant	TP
+ERR4831404	LZD_R	amikacin	R	>16	resistant	TP
+ERR4831404	LZD_R	delamanid	S	<=0.008	not_detected	TN
+ERR4831404	LZD_R	linezolid	R	2.0	resistant	TP
+ERR4831404	LZD_R	bedaquiline	S	0.06	not_detected	TN
+ERR4831404	LZD_R	clofazimine	S	0.12	not_detected	TN
+ERR4831713	pair_6to12	rifampicin		0.06	not_detected	no_phenotype
+ERR4831713	pair_6to12	isoniazid	R	3.2	resistant	TP
+ERR4831713	pair_6to12	ethambutol		2.0	not_detected	no_phenotype
+ERR4831713	pair_6to12	levofloxacin		0.25	not_detected	no_phenotype
+ERR4831713	pair_6to12	moxifloxacin		0.12	not_detected	no_phenotype
+ERR4831713	pair_6to12	ethionamide	S	1.0	not_detected	TN
+ERR4831713	pair_6to12	kanamycin	S	<=1	not_detected	TN
+ERR4831713	pair_6to12	amikacin		0.5	not_detected	no_phenotype
+ERR4831713	pair_6to12	delamanid		0.015	not_detected	no_phenotype
+ERR4831713	pair_6to12	linezolid		0.5	not_detected	no_phenotype
+ERR4831713	pair_6to12	bedaquiline		0.06	not_detected	no_phenotype
+ERR4831713	pair_6to12	clofazimine		0.25	not_detected	no_phenotype
+ERR4831755	overlap_low_mtbc	rifampicin	S	<=0.03	not_detected	TN
+ERR4831755	overlap_low_mtbc	isoniazid	R	1.6	resistant	TP
+ERR4831755	overlap_low_mtbc	ethambutol	S	0.5	not_detected	TN
+ERR4831755	overlap_low_mtbc	levofloxacin	S	0.25	not_detected	TN
+ERR4831755	overlap_low_mtbc	moxifloxacin	S	<=0.06	not_detected	TN
+ERR4831755	overlap_low_mtbc	ethionamide	S	<=0.25	not_detected	TN
+ERR4831755	overlap_low_mtbc	kanamycin	S	<=1	not_detected	TN
+ERR4831755	overlap_low_mtbc	amikacin	S	<=0.25	not_detected	TN
+ERR4831755	overlap_low_mtbc	delamanid	S	<=0.008	not_detected	TN
+ERR4831755	overlap_low_mtbc	linezolid	S	0.25	not_detected	TN
+ERR4831755	overlap_low_mtbc	bedaquiline	S	0.015	not_detected	TN
+ERR4831755	overlap_low_mtbc	clofazimine	S	0.06	not_detected	TN
+ERR4831831	pair_le5	rifampicin	R	>8	resistant	TP
+ERR4831831	pair_le5	isoniazid	R	1.6	resistant	TP
+ERR4831831	pair_le5	ethambutol	R	32.0	resistant	TP
+ERR4831831	pair_le5	levofloxacin		0.25	not_detected	no_phenotype
+ERR4831831	pair_le5	moxifloxacin	S	0.25	not_detected	TN
+ERR4831831	pair_le5	ethionamide		1.0	not_detected	no_phenotype
+ERR4831831	pair_le5	kanamycin	S	2.0	not_detected	TN
+ERR4831831	pair_le5	amikacin	S	0.5	not_detected	TN
+ERR4831831	pair_le5	delamanid		0.015	not_detected	no_phenotype
+ERR4831831	pair_le5	linezolid	S	0.5	not_detected	TN
+ERR4831831	pair_le5	bedaquiline	S	0.03	not_detected	TN
+ERR4831831	pair_le5	clofazimine	S	0.06	not_detected	TN
+ERR4831863	pair_6to12	rifampicin	S	0.06	not_detected	TN
+ERR4831863	pair_6to12	isoniazid	R	3.2	resistant	TP
+ERR4831863	pair_6to12	ethambutol			not_detected	no_phenotype
+ERR4831863	pair_6to12	levofloxacin	S	0.25	not_detected	TN
+ERR4831863	pair_6to12	moxifloxacin		0.25	not_detected	no_phenotype
+ERR4831863	pair_6to12	ethionamide	S	1.0	not_detected	TN
+ERR4831863	pair_6to12	kanamycin	S	<=1	not_detected	TN
+ERR4831863	pair_6to12	amikacin	S	<=0.25	not_detected	TN
+ERR4831863	pair_6to12	delamanid	S	<=0.008	not_detected	TN
+ERR4831863	pair_6to12	linezolid	S	0.25	not_detected	TN
+ERR4831863	pair_6to12	bedaquiline	S	0.06	not_detected	TN
+ERR4831863	pair_6to12	clofazimine	S	0.06	not_detected	TN
+ERR4831870	pair_le5	rifampicin	R	>8	resistant	TP
+ERR4831870	pair_le5	isoniazid	R	3.2	resistant	TP
+ERR4831870	pair_le5	ethambutol	R	32.0	resistant	TP
+ERR4831870	pair_le5	levofloxacin		1.0	not_detected	no_phenotype
+ERR4831870	pair_le5	moxifloxacin		0.5	not_detected	no_phenotype
+ERR4831870	pair_le5	ethionamide		2.0	not_detected	no_phenotype
+ERR4831870	pair_le5	kanamycin		2.0	not_detected	no_phenotype
+ERR4831870	pair_le5	amikacin		1.0	not_detected	no_phenotype
+ERR4831870	pair_le5	delamanid	S	<=0.008	not_detected	TN
+ERR4831870	pair_le5	linezolid	S	0.5	not_detected	TN
+ERR4831870	pair_le5	bedaquiline	S	0.03	not_detected	TN
+ERR4831870	pair_le5	clofazimine		0.12	not_detected	no_phenotype
+ERR4831883	MDR_FQ_S	rifampicin	R	>8	resistant	TP
+ERR4831883	MDR_FQ_S	isoniazid	R	3.2	resistant	TP
+ERR4831883	MDR_FQ_S	ethambutol	R	16.0	resistant	TP
+ERR4831883	MDR_FQ_S	levofloxacin	S	0.25	not_detected	TN
+ERR4831883	MDR_FQ_S	moxifloxacin	S	0.12	not_detected	TN
+ERR4831883	MDR_FQ_S	ethionamide	R	>8	resistant	TP
+ERR4831883	MDR_FQ_S	kanamycin	S	<=1	not_detected	TN
+ERR4831883	MDR_FQ_S	amikacin	S	<=0.25	not_detected	TN
+ERR4831883	MDR_FQ_S	delamanid	R	>0.5	resistant	TP
+ERR4831883	MDR_FQ_S	linezolid	S	0.5	not_detected	TN
+ERR4831883	MDR_FQ_S	bedaquiline	S	0.015	not_detected	TN
+ERR4831883	MDR_FQ_S	clofazimine	S	<=0.03	not_detected	TN
+ERR5918131	INH_mono	rifampicin	S	0.12	not_detected	TN
+ERR5918131	INH_mono	isoniazid	R	3.2	not_detected	FN
+ERR5918131	INH_mono	ethambutol	S	1.0	not_detected	TN
+ERR5918131	INH_mono	levofloxacin	S	0.5	not_detected	TN
+ERR5918131	INH_mono	moxifloxacin		0.5	not_detected	no_phenotype
+ERR5918131	INH_mono	ethionamide		2.0	not_detected	no_phenotype
+ERR5918131	INH_mono	kanamycin	S	2.0	not_detected	TN
+ERR5918131	INH_mono	amikacin	S	0.5	not_detected	TN
+ERR5918131	INH_mono	delamanid		0.03	not_detected	no_phenotype
+ERR5918131	INH_mono	linezolid	S	0.5	not_detected	TN
+ERR5918131	INH_mono	bedaquiline	S	0.03	not_detected	TN
+ERR5918131	INH_mono	clofazimine	S	0.06	not_detected	TN
+ERR8699104	pan_susceptible	rifampicin	S	0.06	not_detected	TN
+ERR8699104	pan_susceptible	isoniazid	S	0.05	not_detected	TN
+ERR8699104	pan_susceptible	ethambutol	S	1.0	not_detected	TN
+ERR8699104	pan_susceptible	levofloxacin	S	0.5	not_detected	TN
+ERR8699104	pan_susceptible	moxifloxacin	S	0.5	not_detected	TN
+ERR8699104	pan_susceptible	ethionamide	S	1.0	not_detected	TN
+ERR8699104	pan_susceptible	kanamycin	S	2.0	not_detected	TN
+ERR8699104	pan_susceptible	amikacin	S	<=0.25	not_detected	TN
+ERR8699104	pan_susceptible	delamanid	S	0.015	not_detected	TN
+ERR8699104	pan_susceptible	linezolid	S	0.25	not_detected	TN
+ERR8699104	pan_susceptible	bedaquiline	S	0.03	not_detected	TN
+ERR8699104	pan_susceptible	clofazimine	S	0.06	not_detected	TN
+ERR8975947	BDQ_R	rifampicin	R	>8	resistant	TP
+ERR8975947	BDQ_R	isoniazid	S	0.05	not_detected	TN
+ERR8975947	BDQ_R	ethambutol	S	1.0	not_detected	TN
+ERR8975947	BDQ_R	levofloxacin	S	0.5	not_detected	TN
+ERR8975947	BDQ_R	moxifloxacin		0.25	not_detected	no_phenotype
+ERR8975947	BDQ_R	ethionamide	S	2.0	not_detected	TN
+ERR8975947	BDQ_R	kanamycin	S	2.0	not_detected	TN
+ERR8975947	BDQ_R	amikacin	S	<=0.25	not_detected	TN
+ERR8975947	BDQ_R	delamanid		0.015	not_detected	no_phenotype
+ERR8975947	BDQ_R	linezolid	S	0.5	not_detected	TN
+ERR8975947	BDQ_R	bedaquiline	R	0.5	resistant	TP
+ERR8975947	BDQ_R	clofazimine		1.0	resistant	no_phenotype
