@@ -1,0 +1,12 @@
+check	samples	expected	observed	pass
+low_coverage	ERR2510395	coverage_qc FAIL	FAIL (18.36x)	yes
+low_coverage	ERR2510541	coverage_qc FAIL	FAIL (17.36x)	yes
+suspected_mixed	ERR4797089	mixed_lineage yes	yes (lineage1.1.3.1;lineage4.3.3)	yes
+suspected_mixed	ERR4830345	mixed_lineage yes	yes (lineage1.1.1.1;lineage2.2.1)	yes
+overlap_low_mtbc	ERR4831755	mtbc_flag LOW_MTBC	LOW_MTBC (75.16%)	yes
+overlap_rpoB_H445L	ERR4811536	rifampicin resistant	resistant	yes
+pair_6to12_1	ERR4831713/ERR4831863	same cluster_12snp	T12-2 / T12-2	yes
+pair_gt100_1	ERR4830557/ERR4830567	not clustered	- / -	yes
+pair_le5_1	ERR4830566/ERR4830565	same cluster_5snp	T5-1 / T5-1	yes
+pair_le5_2	ERR4831831/ERR4831870	same cluster_5snp	T5-2 / T5-2	yes
+lineage	49 samples	same lineage as CRyPTIC	49/49	yes

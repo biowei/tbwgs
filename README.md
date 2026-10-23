@@ -74,7 +74,21 @@ The tbdb archive sha256 is `28da4bcd3f0af7f7db6bce62885b50c441289e4240c5d43f008d
 ## Validation status
 
 > [!IMPORTANT]
-> Release 1.0.0 has passed a functional check only. It is not validated for clinical or public health reporting.
+> Release 1.0.0 has passed a functional check and a 51-isolate run on public data. It is not validated for clinical or public health reporting.
+
+### 51 CRyPTIC isolates
+
+tbwgs 1.0.0 was run on 51 public CRyPTIC isolates with HIGH-quality phenotypes, on Seqera Platform with AWS Batch. The run cost about $1.26.
+
+- **QC, lineage and clustering:** all 11 expected checks pass. Low-coverage isolates fail coverage QC, both suspected mixed infections are flagged, same-patient pairs cluster at the expected SNP threshold, and the lineage matches CRyPTIC for 49 of 49 isolates.
+- **First-line drugs and fluoroquinolones:** sensitivity is 100% for rifampicin (23/23), 96% for isoniazid (26/27), 100% for ethambutol (16/16) and 88% for levofloxacin (7/8). Specificity is 80% for rifampicin (16/20) and 88% for isoniazid (15/17). Most false positives are borderline `rpoB`, `inhA` or `embB` mutations, or a mixed infection.
+- **New and repurposed drugs:** sensitivity is 25% for bedaquiline (1/4), 29% for linezolid (2/7) and 0% for clofazimine (0/1). The missed isolates carry no catalogue mutation, so the gap is in the WHO catalogue, not in a pipeline step.
+- **To fix:** 18 isolates get the LOW_MTBC flag, but only 1 was expected to. The other 17 are at 82–90% MTBC, just below `--mtb_min_mtbc_fraction 90`.
+- The method, the per-sample calls, the scripts and the other findings are in [docs/validation/formal_validation_51.md](docs/validation/formal_validation_51.md).
+
+![tbwgs 1.0.0 on 51 CRyPTIC isolates](docs/validation/formal_validation_51/formal_validation_51.png)
+
+### 8 CRyPTIC isolates, compared with tbtamr
 
 - The nf-test tests use simulated H37Rv reads. They show that every step runs.
 - The default QC thresholds were set from a run on 8 public CRyPTIC isolates (see [biowei/tbtamr-validation](https://github.com/biowei/tbtamr-validation)). On those isolates, tbwgs was also compared with [tbtAMR](https://github.com/MDU-PHL/tbtamr):
@@ -82,9 +96,11 @@ The tbdb archive sha256 is `28da4bcd3f0af7f7db6bce62885b50c441289e4240c5d43f008d
   - **23 of 24** calls agreed with the phenotype for rifampicin, isoniazid and ethambutol, for both tools. The one difference is the borderline `rpoB` p.His445Leu mutation.
   - The full method, data and scripts are in [docs/validation/tbtamr_comparison.md](docs/validation/tbtamr_comparison.md).
 
-- 8 isolates are not enough for a formal laboratory validation. Before you use the pipeline for reporting, validate it in your laboratory: use more samples with phenotypes, include local samples, run it on your own compute and write a validation report.
-
 ![tbwgs vs tbtamr on 8 CRyPTIC isolates](docs/validation/tbtamr_comparison/tbwgs_vs_tbtamr.png)
+
+### Before you report results
+
+These runs use public data only. Before you use the pipeline for reporting, validate it in your laboratory: use more samples with phenotypes, include local samples, run it on your own compute and write a validation report.
 
 ## Credits
 
