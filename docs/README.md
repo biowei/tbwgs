@@ -6,3 +6,7 @@ The biowei/tbwgs documentation is split into the following pages:
   - An overview of how the pipeline works, how to run it and a description of all of the different command-line flags.
 - [Output](output.md)
   - An overview of the different results produced by the pipeline and how to interpret them.
+- [Validation on 51 CRyPTIC isolates](validation/formal_validation_51.md)
+  - Drug resistance calls against phenotype, QC, lineage and clustering checks on public data.
+- [Comparison with tbtamr](validation/tbtamr_comparison.md)
+  - tbwgs and tbtamr on 8 CRyPTIC isolates.
